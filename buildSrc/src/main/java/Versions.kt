@@ -9,6 +9,8 @@ object Versions {
     const val appcompat = "1.4.1"
     const val material = "1.5.0"
     const val constraintLayout = "2.1.3"
+    const val retrofit = "2.9.0"
+    const val okHttp = "4.9.3"
     const val junit = "4.13.2"
     const val testJunit = "1.1.3"
     const val espresso = "3.4.0"
