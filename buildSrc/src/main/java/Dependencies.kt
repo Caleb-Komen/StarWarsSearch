@@ -6,4 +6,6 @@ object Dependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val okHttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
+    const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
+    const val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
 }

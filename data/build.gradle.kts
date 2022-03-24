@@ -12,4 +12,7 @@ dependencies {
     implementation(Dependencies.retrofit)
     implementation(Dependencies.gsonConverter)
     implementation(Dependencies.okHttpLogging)
+    implementation(Dependencies.coroutinesCore)
+    implementation(Dependencies.coroutinesAndroid)
+    implementation(project(mapOf("path" to ":domain")))
 }
