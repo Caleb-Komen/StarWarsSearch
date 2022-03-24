@@ -3,7 +3,7 @@ package com.arch.starwarssearch.remote
 import com.arch.starwarssearch.model.*
 import kotlinx.coroutines.flow.Flow
 
-interface CharacterDetailsDatasource {
+interface CharacterDetailsRemoteDatasource {
     suspend fun getCharacterPlanet(characterUrl: String): Flow<Planet>
 
     suspend fun getCharacterFilms(characterUrl: String): Flow<List<Film>>

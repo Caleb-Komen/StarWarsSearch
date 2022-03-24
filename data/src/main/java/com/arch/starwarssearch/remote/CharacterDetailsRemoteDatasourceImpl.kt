@@ -6,9 +6,9 @@ import com.arch.starwarssearch.remote.mapper.toDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class CharacterDetailsDatasourceImpl(
+class CharacterDetailsRemoteDatasourceImpl(
     private val apiService: StarWarsService
-): CharacterDetailsDatasource {
+): CharacterDetailsRemoteDatasource {
     override suspend fun getCharacterPlanet(characterUrl: String): Flow<Planet> = flow{
         val planetResponse = apiService.getPlanetResponse(characterUrl).homeWorld
         val planetInfo = apiService.getPlanetInfo(planetResponse)
