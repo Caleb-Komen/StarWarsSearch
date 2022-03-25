@@ -2,7 +2,6 @@ package com.arch.starwarssearch.remote
 
 import com.arch.starwarssearch.remote.StarWarsRequestDispatcher.Companion.CHARACTER_URL
 import com.google.common.truth.Truth
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
