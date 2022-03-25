@@ -19,7 +19,7 @@ class CharacterDetailsRemoteDatasourceImpl(
         val filmsResponse = apiService.getFilmsResponse(characterUrl).films
         val films = mutableListOf<Film>()
         filmsResponse.forEach {
-            apiService.getFilmInfo(it).toDomain()
+            films.add(apiService.getFilmInfo(it).toDomain())
         }
         emit(films)
     }
@@ -28,7 +28,7 @@ class CharacterDetailsRemoteDatasourceImpl(
         val speciesResponse = apiService.getSpeciesResponse(characterUrl).species
         val species = mutableListOf<Specie>()
         speciesResponse.forEach {
-            apiService.getSpecieInfo(it).toDomain()
+            species.add(apiService.getSpecieInfo(it).toDomain())
         }
         emit(species)
     }
@@ -37,7 +37,7 @@ class CharacterDetailsRemoteDatasourceImpl(
         val vehiclesResponse = apiService.getVehiclesResponse(characterUrl).vehicles
         val vehicles = mutableListOf<Vehicle>()
         vehiclesResponse.forEach {
-            apiService.getVehicleInfo(it).toDomain()
+            vehicles.add(apiService.getVehicleInfo(it).toDomain())
         }
         emit(vehicles)
     }
@@ -46,7 +46,7 @@ class CharacterDetailsRemoteDatasourceImpl(
         val starShipsResponse = apiService.getStarShipsResponse(characterUrl).starships
         val starShips = mutableListOf<StarShip>()
         starShipsResponse.forEach {
-            apiService.getStarshipInfo(it).toDomain()
+            starShips.add(apiService.getStarshipInfo(it).toDomain())
         }
         emit(starShips)
     }

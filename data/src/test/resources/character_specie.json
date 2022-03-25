@@ -1,0 +1,21 @@
+{
+  "average_height": "180",
+  "average_lifespan": "120",
+  "classification": "mammal",
+  "created": "2014-12-10T13:52:11.567000Z",
+  "designation": "sentient",
+  "edited": "2014-12-20T21:36:42.136000Z",
+  "eye_colors": "brown, blue, green, hazel, grey, amber",
+  "films": [
+    "/api/films/1/"
+  ],
+  "hair_colors": "blonde, brown, black, red",
+  "homeworld": "/api/planets/1/",
+  "language": "Galactic Basic",
+  "name": "Human",
+  "people": [
+    "/api/people/1/"
+  ],
+  "skin_colors": "caucasian, black, asian, hispanic",
+  "url": "/api/species/1/"
+}

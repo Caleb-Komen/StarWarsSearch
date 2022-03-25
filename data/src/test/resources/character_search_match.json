@@ -1,0 +1,33 @@
+{
+  "count": 1,
+  "next": null,
+  "previous": null,
+  "results": [
+    {
+      "birth_year": "19BBY",
+      "created": "2014-12-09T13:50:51.644000Z",
+      "edited": "2014-12-20T21:17:56.891000Z",
+      "eye_color": "blue",
+      "films": [
+        "/api/films/1/"
+      ],
+      "gender": "male",
+      "hair_color": "blond",
+      "height": "172",
+      "homeworld": "/api/planets/1/",
+      "mass": "77",
+      "name": "Luke Skywalker",
+      "skin_color": "fair",
+      "species": [
+        "/api/species/1/"
+      ],
+      "starships": [
+        "/api/starships/1/"
+      ],
+      "url": "/api/people/1/",
+      "vehicles": [
+        "/api/vehicles/1/"
+      ]
+    }
+  ]
+}

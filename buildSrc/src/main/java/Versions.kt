@@ -12,7 +12,10 @@ object Versions {
     const val retrofit = "2.9.0"
     const val okHttp = "4.9.3"
     const val coroutines = "1.6.0"
+
     const val junit = "4.13.2"
     const val testJunit = "1.1.3"
     const val espresso = "3.4.0"
+    const val mockWebServer = "4.9.3"
+    const val truth = "1.1.3"
 }

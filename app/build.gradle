@@ -37,7 +37,6 @@ dependencies {
     implementation Dependencies.appcompat
     implementation Dependencies.material
     implementation Dependencies.constraintLayout
-    testImplementation TestDependencies.junit4
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espresso
 }

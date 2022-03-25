@@ -1,0 +1,22 @@
+{
+  "cargo_capacity": "10",
+  "consumables": "none",
+  "cost_in_credits": "unknown",
+  "created": "2014-12-15T12:22:12Z",
+  "crew": "2",
+  "edited": "2014-12-20T21:30:21.672000Z",
+  "films": [
+    "/api/films/1/"
+  ],
+  "length": "4.5",
+  "manufacturer": "Incom corporation",
+  "max_atmosphering_speed": "650",
+  "model": "t-47 airspeeder",
+  "name": "Snowspeeder",
+  "passengers": "0",
+  "pilots": [
+    "/api/people/1/"
+  ],
+  "url": "/api/vehicles/1/",
+  "vehicle_class": "airspeeder"
+}

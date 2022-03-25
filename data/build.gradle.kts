@@ -15,4 +15,8 @@ dependencies {
     implementation(Dependencies.coroutinesCore)
     implementation(Dependencies.coroutinesAndroid)
     implementation(project(mapOf("path" to ":domain")))
+
+    testImplementation(TestDependencies.junit4)
+    testImplementation(TestDependencies.mockWebServer)
+    testImplementation(TestDependencies.truth)
 }

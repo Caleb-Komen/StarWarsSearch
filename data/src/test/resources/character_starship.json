@@ -1,0 +1,24 @@
+{
+  "MGLT": "100",
+  "cargo_capacity": "110",
+  "consumables": "1 week",
+  "cost_in_credits": "149999",
+  "created": "2014-12-12T11:19:05.340000Z",
+  "crew": "1",
+  "edited": "2014-12-20T21:23:49.886000Z",
+  "films": [
+    "/api/films/1/"
+  ],
+  "hyperdrive_rating": "1.0",
+  "length": "12.5",
+  "manufacturer": "Incom Corporation",
+  "max_atmosphering_speed": "1050",
+  "model": "T-65 X-wing",
+  "name": "X-wing",
+  "passengers": "0",
+  "pilots": [
+    "/api/people/1/"
+  ],
+  "starship_class": "Starfighter",
+  "url": "/api/starships/1/"
+}
