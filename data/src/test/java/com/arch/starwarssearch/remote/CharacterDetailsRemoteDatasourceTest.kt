@@ -49,7 +49,7 @@ class CharacterDetailsRemoteDatasourceTest: BaseTest() {
     fun getCharacterVehicles_confirmVehiclesRetrieved() = runBlocking {
         val response = characterDetailsRemoteDatasource.getCharacterVehicles(CHARACTER_URL)
         response.collect{ vehicles ->
-            Truth.assertThat(vehicles)
+            Truth.assertThat(vehicles.size).isAtLeast(1)
         }
     }
 }
