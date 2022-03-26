@@ -1,5 +1,6 @@
 package com.arch.starwarssearch.remote
 
+import com.arch.starwarssearch.util.Utils.readFromFile
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
@@ -55,12 +56,6 @@ class StarWarsRequestDispatcher: Dispatcher() {
             }
             else -> throw IllegalArgumentException("Unknown request path '${request.path}'")
         }
-    }
-
-    private fun readFromFile(fileName: String): String{
-        return javaClass.classLoader?.let {
-            it.getResource(fileName)?.readText()
-        }!!
     }
 
     companion object{

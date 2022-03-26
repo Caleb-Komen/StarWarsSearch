@@ -1,7 +1,7 @@
 package com.arch.starwarssearch.repository
 
 import com.arch.starwarssearch.remote.CharacterDetailsRemoteDatasource
-import com.arch.starwarssearch.remote.StarWarsRequestDispatcher.Companion.CHARACTER_URL
+import com.arch.starwarssearch.repository.data.FakeCharacterDetailsRemoteDatasource
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -21,7 +21,7 @@ class CharacterDetailsRepositoryTest {
 
     @Test
     fun getCharacterPlanetFromRemoteDataSource_confirmPlanetRetrieved() = runBlocking {
-        val result = characterDetailsRemoteDatasource.getCharacterPlanet(CHARACTER_URL)
+        val result = characterDetailsRemoteDatasource.getCharacterPlanet("")
         result.collect{ planet ->
             Truth.assertThat(planet.name).matches("Tatooine")
         }
@@ -29,7 +29,7 @@ class CharacterDetailsRepositoryTest {
 
     @Test
     fun getCharacterFilmsFromRemoteDataSource_confirmFilmsRetrieved() = runBlocking {
-        val result = characterDetailsRemoteDatasource.getCharacterFilms(CHARACTER_URL)
+        val result = characterDetailsRemoteDatasource.getCharacterFilms("")
         result.collect{ films ->
             Truth.assertThat(films.size).isAtLeast(1)
             Truth.assertThat(films.first().title).matches("A New Hope")
@@ -38,7 +38,7 @@ class CharacterDetailsRepositoryTest {
 
     @Test
     fun getCharacterSpeciesFromRemoteDataSource_confirmSpeciesRetrieved() = runBlocking {
-        val result = characterDetailsRemoteDatasource.getCharacterSpecies(CHARACTER_URL)
+        val result = characterDetailsRemoteDatasource.getCharacterSpecies("")
         result.collect{ species ->
             Truth.assertThat(species.size).isAtLeast(1)
             Truth.assertThat(species.first().name).matches("Human")
@@ -47,7 +47,7 @@ class CharacterDetailsRepositoryTest {
 
     @Test
     fun getCharacterStarshipsFromRemoteDataSource_confirmStarshipsRetrieved() = runBlocking {
-        val result = characterDetailsRemoteDatasource.getCharacterStarShips(CHARACTER_URL)
+        val result = characterDetailsRemoteDatasource.getCharacterStarShips("")
         result.collect{ starships ->
             Truth.assertThat(starships.size).isAtLeast(1)
             Truth.assertThat(starships.first().name).matches("X-wing")
@@ -56,7 +56,7 @@ class CharacterDetailsRepositoryTest {
 
     @Test
     fun getCharacterVehiclesFromRemoteDataSource_confirmVehiclesRetrieved() = runBlocking {
-        val result = characterDetailsRemoteDatasource.getCharacterVehicles(CHARACTER_URL)
+        val result = characterDetailsRemoteDatasource.getCharacterVehicles("")
         result.collect{ vehicles ->
             Truth.assertThat(vehicles.size).isAtLeast(1)
             Truth.assertThat(vehicles.first().name).matches("Snowspeeder")

@@ -1,4 +1,4 @@
-package com.arch.starwarssearch.repository
+package com.arch.starwarssearch.repository.data
 
 import com.arch.starwarssearch.model.*
 import com.arch.starwarssearch.remote.CharacterDetailsRemoteDatasource

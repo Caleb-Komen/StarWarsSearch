@@ -1,7 +1,7 @@
 package com.arch.starwarssearch.repository
 
 import com.arch.starwarssearch.remote.CharacterSearchRemoteDataSource
-import com.arch.starwarssearch.remote.StarWarsRequestDispatcher.Companion.EXISTING_SEARCH_PARAMS
+import com.arch.starwarssearch.repository.data.FakeCharacterSearchRemoteDataSource
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
@@ -21,7 +21,7 @@ class CharacterSearchRepositoryTest {
 
     @Test
     fun searchCharacterFromRemoteDataSource_confirmCharacterRetrieved() = runBlocking {
-        val results = characterSearchRepository.searchCharacter(EXISTING_SEARCH_PARAMS)
+        val results = characterSearchRepository.searchCharacter("")
         results.collect{ characters ->
             Truth.assertThat(characters).isNotEmpty()
             Truth.assertThat(characters.first().name).matches("Luke Skywalker")

@@ -1,6 +1,7 @@
-package com.arch.starwarssearch.repository
+package com.arch.starwarssearch.repository.data
 
 import com.arch.starwarssearch.model.*
+import com.arch.starwarssearch.util.Utils.readFromFile
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -53,9 +54,4 @@ object DataFactory {
             )
     }
 
-    private fun readFromFile(fileName: String): String{
-        return javaClass.classLoader?.let {
-            it.getResource(fileName)?.readText()
-        }!!
-    }
 }
