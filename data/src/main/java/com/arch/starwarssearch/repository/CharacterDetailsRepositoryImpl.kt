@@ -3,8 +3,11 @@ package com.arch.starwarssearch.repository
 import com.arch.starwarssearch.model.*
 import com.arch.starwarssearch.remote.CharacterDetailsRemoteDatasource
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class CharacterDetailsRepositoryImpl(
+@Singleton
+class CharacterDetailsRepositoryImpl @Inject constructor(
     private val characterDetailsRemoteDatasource: CharacterDetailsRemoteDatasource
 ): CharacterDetailsRepository {
     override suspend fun getCharacterFilms(characterUrl: String): Flow<List<Film>> {

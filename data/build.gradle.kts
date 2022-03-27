@@ -9,12 +9,13 @@ java {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":domain")))
     implementation(Dependencies.retrofit)
     implementation(Dependencies.gsonConverter)
     implementation(Dependencies.okHttpLogging)
     implementation(Dependencies.coroutinesCore)
     implementation(Dependencies.coroutinesAndroid)
-    implementation(project(mapOf("path" to ":domain")))
+    implementation(Dependencies.hiltAndroid)
 
     testImplementation(TestDependencies.junit4)
     testImplementation(TestDependencies.mockWebServer)

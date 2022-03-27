@@ -12,6 +12,7 @@ object Versions {
     const val retrofit = "2.9.0"
     const val okHttp = "4.9.3"
     const val coroutines = "1.6.0"
+    const val hilt = "2.38.1"
 
     const val junit = "4.13.2"
     const val testJunit = "1.1.3"

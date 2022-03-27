@@ -5,8 +5,11 @@ import com.arch.starwarssearch.remote.api.StarWarsService
 import com.arch.starwarssearch.remote.mapper.toDomain
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class CharacterDetailsRemoteDatasourceImpl(
+@Singleton
+class CharacterDetailsRemoteDatasourceImpl @Inject constructor(
     private val apiService: StarWarsService
 ): CharacterDetailsRemoteDatasource {
     override suspend fun getCharacterPlanet(characterUrl: String): Flow<Planet> = flow{

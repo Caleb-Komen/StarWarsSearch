@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -33,10 +35,17 @@ android {
 
 dependencies {
 
+    implementation project(path: ':domain')
+    implementation project(path: ':data')
     implementation Dependencies.coreKtx
     implementation Dependencies.appcompat
     implementation Dependencies.material
     implementation Dependencies.constraintLayout
+    implementation Dependencies.hiltAndroid
+    kapt Dependencies.hiltCompiler
+    implementation Dependencies.retrofit
+    implementation Dependencies.gsonConverter
+    implementation Dependencies.okHttpLogging
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espresso
 }
