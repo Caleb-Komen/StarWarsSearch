@@ -10,5 +10,8 @@ java {
 
 dependencies {
     implementation(Dependencies.coroutinesCore)
-    implementation(Dependencies.coroutinesAndroid)
+    implementation(Dependencies.hiltCore)
+
+    testImplementation(TestDependencies.junit4)
+    testImplementation(TestDependencies.truth)
 }

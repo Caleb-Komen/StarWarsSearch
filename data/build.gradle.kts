@@ -14,8 +14,7 @@ dependencies {
     implementation(Dependencies.gsonConverter)
     implementation(Dependencies.okHttpLogging)
     implementation(Dependencies.coroutinesCore)
-    implementation(Dependencies.coroutinesAndroid)
-    implementation(Dependencies.hiltAndroid)
+    implementation(Dependencies.hiltCore)
 
     testImplementation(TestDependencies.junit4)
     testImplementation(TestDependencies.mockWebServer)

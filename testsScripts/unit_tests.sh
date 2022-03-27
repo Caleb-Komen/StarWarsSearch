@@ -21,5 +21,6 @@ cd "/home/caleb/AndroidStudioProjects/StarWarsSearch/"
 print_yellow "\n\nRunning unit tests...\n"
 
 ./gradlew data:test
+./gradlew domain:test
 
 print_green "\nUnit tests COMPLETE.\n"
