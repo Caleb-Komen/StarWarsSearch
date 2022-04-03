@@ -46,6 +46,8 @@ dependencies {
     implementation Dependencies.retrofit
     implementation Dependencies.gsonConverter
     implementation Dependencies.okHttpLogging
+    implementation Dependencies.liveData
+    implementation Dependencies.viewModel
     androidTestImplementation TestDependencies.testJunit
     androidTestImplementation TestDependencies.espresso
 }
