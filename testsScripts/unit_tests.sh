@@ -22,5 +22,6 @@ print_yellow "\n\nRunning unit tests...\n"
 
 ./gradlew data:test
 ./gradlew domain:test
+./gradlew app:test
 
 print_green "\nUnit tests COMPLETE.\n"

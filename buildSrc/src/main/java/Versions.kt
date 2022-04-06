@@ -20,4 +20,5 @@ object Versions {
     const val espresso = "3.4.0"
     const val mockWebServer = "4.9.3"
     const val truth = "1.1.3"
+    const val archCoreTesting = "2.1.0"
 }
