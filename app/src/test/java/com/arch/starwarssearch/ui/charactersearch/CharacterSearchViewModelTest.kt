@@ -9,6 +9,7 @@ import com.arch.starwarssearch.State.SUCCESS
 import com.arch.starwarssearch.usecases.SearchCharacterUseCase
 import com.arch.starwarssearch.util.Result.Error
 import com.arch.starwarssearch.util.Result.Success
+import com.arch.starwarssearch.util.UNKNOWN_ERROR
 import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
@@ -61,6 +62,6 @@ class CharacterSearchViewModelTest {
 
         val result = characterSearchViewModel.characters.getOrAwaitValue()
         Truth.assertThat(result).isInstanceOf(Error::class.java)
-        Truth.assertThat((result as Error).message).matches("Unknown error")
+        Truth.assertThat((result as Error).message).matches(UNKNOWN_ERROR)
     }
 }

@@ -4,7 +4,9 @@ import androidx.lifecycle.*
 import com.arch.starwarssearch.model.Character
 import com.arch.starwarssearch.usecases.SearchCharacterUseCase
 import com.arch.starwarssearch.util.AbsentLiveData
+import com.arch.starwarssearch.util.NO_INTERNET
 import com.arch.starwarssearch.util.Result
+import com.arch.starwarssearch.util.UNKNOWN_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
@@ -39,8 +41,8 @@ class CharacterSearchViewModel @Inject constructor(
         val result = MutableLiveData<Result<List<Character>>>()
         val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
             when (throwable){
-                is UnknownHostException -> result.value = Result.Error("No internet connection")
-                else -> result.value = Result.Error("Unknown error")
+                is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
+                else -> result.value = Result.Error(UNKNOWN_ERROR)
             }
         }
         job?.cancel()

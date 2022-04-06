@@ -3,7 +3,9 @@ package com.arch.starwarssearch.ui.characterdetail
 import androidx.lifecycle.*
 import com.arch.starwarssearch.model.*
 import com.arch.starwarssearch.usecases.*
+import com.arch.starwarssearch.util.NO_INTERNET
 import com.arch.starwarssearch.util.Result
+import com.arch.starwarssearch.util.UNKNOWN_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
@@ -37,8 +39,8 @@ class CharacterDetailViewModel @Inject constructor(
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         when (throwable){
-            is UnknownHostException -> Result.Error("No internet connection")
-            else -> Result.Error("Unknown error")
+            is UnknownHostException -> Result.Error(NO_INTERNET)
+            else -> Result.Error(UNKNOWN_ERROR)
         }
     }
 
