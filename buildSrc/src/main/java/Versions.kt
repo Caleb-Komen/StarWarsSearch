@@ -14,6 +14,8 @@ object Versions {
     const val coroutines = "1.6.0"
     const val hilt = "2.38.1"
     const val lifecycle = "2.5.0-alpha05"
+    const val legacySupport = "1.0.0"
+    const val fragmentKtx = "1.4.1"
 
     const val junit = "4.13.2"
     const val testJunit = "1.1.3"

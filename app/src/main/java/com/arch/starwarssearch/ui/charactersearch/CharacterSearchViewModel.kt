@@ -1,7 +1,9 @@
 package com.arch.starwarssearch.ui.charactersearch
 
 import androidx.lifecycle.*
+import com.arch.starwarssearch.mapper.toEntity
 import com.arch.starwarssearch.model.Character
+import com.arch.starwarssearch.model.CharacterPresentation
 import com.arch.starwarssearch.usecases.SearchCharacterUseCase
 import com.arch.starwarssearch.util.AbsentLiveData
 import com.arch.starwarssearch.util.NO_INTERNET
@@ -28,7 +30,7 @@ class CharacterSearchViewModel @Inject constructor(
             searchCharacter(query)
         }
     }
-    val characters: LiveData<Result<List<Character>>> get() = _characters
+    val characters: LiveData<Result<List<CharacterPresentation>>> get() = _characters
 
     fun setSearchQuery(query: String){
         val name = query.lowercase().trim()
@@ -37,8 +39,8 @@ class CharacterSearchViewModel @Inject constructor(
         }
         _characterName.value = name
     }
-    private fun searchCharacter(characterName: String): LiveData<Result<List<Character>>>{
-        val result = MutableLiveData<Result<List<Character>>>()
+    private fun searchCharacter(characterName: String): LiveData<Result<List<CharacterPresentation>>>{
+        val result = MutableLiveData<Result<List<CharacterPresentation>>>()
         val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
             when (throwable){
                 is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
@@ -48,8 +50,9 @@ class CharacterSearchViewModel @Inject constructor(
         job?.cancel()
         result.value = Result.Loading
         job = viewModelScope.launch(coroutineExceptionHandler) {
-            searchCharacterUseCase(characterName).collect {
-                result.value = Result.Success(it)
+            searchCharacterUseCase(characterName).collect { results ->
+                val characters = results.map { it.toEntity() }
+                result.value = Result.Success(characters)
             }
         }
         return result

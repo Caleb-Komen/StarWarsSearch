@@ -13,4 +13,6 @@ object Dependencies {
     const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hilt}"
     const val liveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     const val viewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    const val legacySupport = "androidx.legacy:legacy-support-v4:${Versions.legacySupport}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragmentKtx}"
 }
