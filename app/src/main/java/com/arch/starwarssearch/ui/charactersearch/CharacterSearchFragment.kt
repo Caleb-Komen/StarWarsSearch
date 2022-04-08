@@ -18,7 +18,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class CharacterSearchFragment : Fragment() {
     private var _binding: FragmentCharacterSearchBinding? = null
-    private val binding = _binding!!
+    private val binding get() = _binding!!
 
     private val viewModel: CharacterSearchViewModel by viewModels()
 
