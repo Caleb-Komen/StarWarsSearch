@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">StarWarsSearch</string>
     <string name="character_name">Character name</string>
+    <string name="no_result">No result.\nTry a more general keyword</string>
 </resources>

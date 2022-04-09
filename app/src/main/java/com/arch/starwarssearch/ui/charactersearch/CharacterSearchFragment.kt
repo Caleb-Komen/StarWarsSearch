@@ -50,15 +50,20 @@ class CharacterSearchFragment : Fragment() {
             is Result.Success -> {
                 binding.linearProgress.visibility = View.GONE
                 binding.characters = result.data
+                if (result.data?.isEmpty()!!) showSnackbar(getString(R.string.no_result))
             }
             is Result.Error -> {
                 binding.linearProgress.visibility = View.GONE
-                Snackbar.make(requireView(), result.message!!, Snackbar.LENGTH_SHORT).show()
+                showSnackbar(result.message!!)
             }
             is Result.Loading -> {
                 binding.linearProgress.visibility = View.VISIBLE
             }
         }
+    }
+
+    private fun showSnackbar(message: String){
+        Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun EditText.afterTextChanged(afterTextChanged: (String) -> Unit){
