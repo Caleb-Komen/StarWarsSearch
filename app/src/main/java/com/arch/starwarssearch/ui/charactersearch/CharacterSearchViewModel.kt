@@ -2,10 +2,8 @@ package com.arch.starwarssearch.ui.charactersearch
 
 import androidx.lifecycle.*
 import com.arch.starwarssearch.mapper.toEntity
-import com.arch.starwarssearch.model.Character
 import com.arch.starwarssearch.model.CharacterPresentation
 import com.arch.starwarssearch.usecases.SearchCharacterUseCase
-import com.arch.starwarssearch.util.AbsentLiveData
 import com.arch.starwarssearch.util.NO_INTERNET
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.UNKNOWN_ERROR
