@@ -24,11 +24,7 @@ class CharacterSearchViewModel @Inject constructor(
     private var job: Job? = null
 
     private val _characters = _characterName.switchMap { query ->
-        if (query.isBlank()){
-            AbsentLiveData.create()
-        } else {
-            searchCharacter(query)
-        }
+        searchCharacter(query)
     }
     val characters: LiveData<Result<List<CharacterPresentation>>> get() = _characters
 
