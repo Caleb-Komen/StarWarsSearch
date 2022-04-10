@@ -48,6 +48,7 @@ dependencies {
     implementation Dependencies.legacySupport
     implementation Dependencies.fragmentKtx
     implementation Dependencies.hiltAndroid
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt Dependencies.hiltCompiler
     implementation Dependencies.retrofit
     implementation Dependencies.gsonConverter

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@drawable/list_item_background"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_starship_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_starship_name" />
+
+        <TextView
+            android:id="@+id/tv_starship_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintStart_toEndOf="@id/tv_name"
+            app:layout_constraintTop_toTopOf="@id/tv_name"
+            tools:text="X-wing" />
+
+        <TextView
+            android:id="@+id/tv_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/model"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+        <TextView
+            android:id="@+id/tv_starship_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintStart_toEndOf="@id/tv_model"
+            app:layout_constraintTop_toTopOf="@+id/tv_model"
+            tools:text="T-65 X-wing" />
+
+        <TextView
+            android:id="@+id/tv_manufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/manufacturer"
+            app:layout_constraintStart_toStartOf="@id/tv_model"
+            app:layout_constraintTop_toBottomOf="@id/tv_model" />
+
+        <TextView
+            android:id="@+id/tv_starship_manufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintStart_toEndOf="@id/tv_manufacturer"
+            app:layout_constraintTop_toTopOf="@+id/tv_manufacturer"
+            tools:text="Incom corporation" />
+
+        <TextView
+            android:id="@+id/tv_passengers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/passengers"
+            app:layout_constraintStart_toStartOf="@id/tv_manufacturer"
+            app:layout_constraintTop_toBottomOf="@id/tv_manufacturer" />
+
+        <TextView
+            android:id="@+id/tv_starship_passengers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="TextView"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintStart_toEndOf="@id/tv_passengers"
+            app:layout_constraintTop_toTopOf="@+id/tv_passengers"
+            tools:text="0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
