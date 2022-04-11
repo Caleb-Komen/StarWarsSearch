@@ -2,6 +2,7 @@ package com.arch.starwarssearch.ui.charactersearch
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -28,6 +29,14 @@ class CharactersAdapter: ListAdapter<CharacterPresentation, CharactersAdapter.Ch
     inner class CharactersViewHolder(
         private val binding: ListItemCharacterBinding
     ): RecyclerView.ViewHolder(binding.root){
+        init {
+            binding.setClickListener { view ->
+                val action = CharacterSearchFragmentDirections
+                    .actionCharacterSearchFragmentToCharacterDetailFragment(getItem(adapterPosition))
+                view.findNavController().navigate(action)
+            }
+        }
+
         fun bind(item: CharacterPresentation){
             binding.apply {
                 characterName = item.name

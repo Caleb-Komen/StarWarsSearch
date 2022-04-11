@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.arch.starwarssearch.databinding.FragmentCharacterDetailBinding
 import com.arch.starwarssearch.model.*
 import com.arch.starwarssearch.util.Result
@@ -19,6 +20,8 @@ class CharacterDetailFragment : Fragment() {
 
     private val viewModel: CharacterDetailViewModel by viewModels()
 
+    private val args: CharacterDetailFragmentArgs by navArgs()
+
     private val speciesAdapter = SpeciesAdapter()
 
     private val filmsAdapter = FilmsAdapter()
@@ -31,12 +34,19 @@ class CharacterDetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentCharacterDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentCharacterDetailBinding.inflate(inflater, container, false).apply {
+            character = args.character
+            rvSpecies.adapter = speciesAdapter
+            rvFilms.adapter = filmsAdapter
+            rvStarships.adapter = starshipsAdapter
+            rvVehicles.adapter = vehiclesAdapter
+        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.setCharacterUrl(args.character.url)
         setupObservers()
     }
 
