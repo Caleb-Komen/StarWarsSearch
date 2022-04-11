@@ -1,6 +1,7 @@
 package com.arch.starwarssearch.ui.characterdetail
 
 import androidx.lifecycle.*
+import com.arch.starwarssearch.mapper.toPresentation
 import com.arch.starwarssearch.model.*
 import com.arch.starwarssearch.usecases.*
 import com.arch.starwarssearch.util.NO_INTERNET
@@ -23,19 +24,19 @@ class CharacterDetailViewModel @Inject constructor(
     private val characterUrl = MutableLiveData<String>()
 
     private val _planet = characterUrl.switchMap { getCharacterPlanet(it) }
-    val planet: LiveData<Result<Planet>> get() = _planet
+    val planet: LiveData<Result<PlanetPresentation>> get() = _planet
 
     private val _films = characterUrl.switchMap { getCharacterFilms(it) }
-    val films: LiveData<Result<List<Film>>> get() = _films
+    val films: LiveData<Result<List<FilmPresentation>>> get() = _films
 
     private val _species = characterUrl.switchMap { getCharacterSpecies(it) }
-    val species: LiveData<Result<List<Specie>>> get() = _species
+    val species: LiveData<Result<List<SpeciePresentation>>> get() = _species
 
     private val _starships = characterUrl.switchMap { getCharacterStarships(it) }
-    val starships: LiveData<Result<List<StarShip>>> get() = _starships
+    val starships: LiveData<Result<List<StarshipPresentation>>> get() = _starships
 
     private val _vehicles = characterUrl.switchMap { getCharacterVehicles(it) }
-    val vehicles: LiveData<Result<List<Vehicle>>> get() = _vehicles
+    val vehicles: LiveData<Result<List<VehiclePresentation>>> get() = _vehicles
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
         when (throwable){
@@ -48,56 +49,56 @@ class CharacterDetailViewModel @Inject constructor(
         characterUrl.value = url
     }
 
-    private fun getCharacterPlanet(url: String):LiveData<Result<Planet>> {
-        val result = MutableLiveData<Result<Planet>>()
+    private fun getCharacterPlanet(url: String):LiveData<Result<PlanetPresentation>> {
+        val result = MutableLiveData<Result<PlanetPresentation>>()
         viewModelScope.launch(coroutineExceptionHandler) {
             result.value = Result.Loading
             getCharacterPlanetUseCase(url).collect{ planet ->
-                result.value = Result.Success(planet)
+                result.value = Result.Success(planet.toPresentation())
             }
         }
         return result
     }
 
-    private fun getCharacterFilms(url: String): LiveData<Result<List<Film>>>{
-        val result = MutableLiveData<Result<List<Film>>>()
+    private fun getCharacterFilms(url: String): LiveData<Result<List<FilmPresentation>>>{
+        val result = MutableLiveData<Result<List<FilmPresentation>>>()
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterFilmsUseCase(url).collect{ films ->
-                result.value = Result.Success(films)
+                result.value = Result.Success(films.map { it.toPresentation() })
             }
         }
         return result
     }
 
-    private fun getCharacterSpecies(url: String): LiveData<Result<List<Specie>>>{
-        val result = MutableLiveData<Result<List<Specie>>>()
+    private fun getCharacterSpecies(url: String): LiveData<Result<List<SpeciePresentation>>>{
+        val result = MutableLiveData<Result<List<SpeciePresentation>>>()
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterSpeciesUseCase(url).collect{ species ->
-                result.value = Result.Success(species)
+                result.value = Result.Success(species.map { it.toPresentation() })
             }
         }
         return result
     }
 
-    private fun getCharacterStarships(url: String): LiveData<Result<List<StarShip>>>{
-        val result = MutableLiveData<Result<List<StarShip>>>()
+    private fun getCharacterStarships(url: String): LiveData<Result<List<StarshipPresentation>>>{
+        val result = MutableLiveData<Result<List<StarshipPresentation>>>()
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterStarshipsUseCase(url).collect{ starships ->
-                result.value = Result.Success(starships)
+                result.value = Result.Success(starships.map { it.toPresentation() })
             }
         }
         return result
     }
 
-    private fun getCharacterVehicles(url: String): LiveData<Result<List<Vehicle>>>{
-        val result = MutableLiveData<Result<List<Vehicle>>>()
+    private fun getCharacterVehicles(url: String): LiveData<Result<List<VehiclePresentation>>>{
+        val result = MutableLiveData<Result<List<VehiclePresentation>>>()
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterVehiclesUseCase(url).collect{ vehicles ->
-                result.value = Result.Success(vehicles)
+                result.value = Result.Success(vehicles.map { it.toPresentation() })
             }
         }
         return result

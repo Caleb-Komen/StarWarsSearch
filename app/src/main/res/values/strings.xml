@@ -16,4 +16,7 @@
     <string name="model">Model:</string>
     <string name="manufacturer">Manufacturer:</string>
     <string name="passengers">Passengers:</string>
+    <string name="producer_text">Producer(s): %s</string>
+    <string name="retry">Retry</string>
+    <string name="empty_result">No result.</string>
 </resources>

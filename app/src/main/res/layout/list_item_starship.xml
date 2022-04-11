@@ -3,6 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="starship"
+            type="com.arch.starwarssearch.model.StarshipPresentation" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            android:text="@{starship.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             app:layout_constraintStart_toEndOf="@id/tv_name"
             app:layout_constraintTop_toTopOf="@id/tv_name"
@@ -44,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            android:text="@{starship.model}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             app:layout_constraintStart_toEndOf="@id/tv_model"
             app:layout_constraintTop_toTopOf="@+id/tv_model"
@@ -64,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            android:text="@{starship.manufacturer}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             app:layout_constraintStart_toEndOf="@id/tv_manufacturer"
             app:layout_constraintTop_toTopOf="@+id/tv_manufacturer"
@@ -84,7 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            android:text="@{starship.passengers}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             app:layout_constraintStart_toEndOf="@id/tv_passengers"
             app:layout_constraintTop_toTopOf="@+id/tv_passengers"

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
 
+    <data>
+        <variable
+            name="specie"
+            type="com.arch.starwarssearch.model.SpeciePresentation" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -24,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            android:text="@{specie.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             app:layout_constraintStart_toEndOf="@id/tv_name"
             app:layout_constraintTop_toTopOf="@id/tv_name"
@@ -44,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="TextView"
+            android:text="@{specie.language}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
             app:layout_constraintBottom_toBottomOf="@+id/tv_language"
             app:layout_constraintStart_toEndOf="@id/tv_language"

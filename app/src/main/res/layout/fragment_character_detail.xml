@@ -3,6 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <import type="android.view.View" />
+        <import type="java.util.List" />
+        <import type="com.arch.starwarssearch.model.SpeciePresentation" />
+        <import type="com.arch.starwarssearch.model.FilmPresentation" />
+        <import type="com.arch.starwarssearch.model.StarshipPresentation" />
+        <import type="com.arch.starwarssearch.model.VehiclePresentation" />
+        <variable
+            name="character"
+            type="com.arch.starwarssearch.model.CharacterPresentation" />
+        <variable
+            name="planet"
+            type="com.arch.starwarssearch.model.PlanetPresentation" />
+        <variable
+            name="species"
+            type="List&lt;SpeciePresentation>" />
+        <variable
+            name="films"
+            type="List&lt;FilmPresentation>" />
+        <variable
+            name="starships"
+            type="List&lt;StarshipPresentation>" />
+        <variable
+            name="vehicles"
+            type="List&lt;VehiclePresentation>" />
+    </data>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,7 +65,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="TextView"
+                        android:text="@{character.height}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_height"
                         app:layout_constraintStart_toEndOf="@id/tv_height"
@@ -61,7 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="TextView"
+                        android:text="@{character.birthYear}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_birth_year"
                         app:layout_constraintStart_toEndOf="@id/tv_birth_year"
@@ -82,10 +108,30 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/card_elevation">
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/planet_error_layout"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_planet_error"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        tools:text="Error"/>
+                    <ImageButton
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/retry" />
+                </LinearLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/planet_success_layout"
                     android:padding="4dp">
 
                     <TextView
@@ -102,7 +148,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="TextView"
+                        android:text="@{planet.name}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         app:layout_constraintStart_toEndOf="@id/tv_name"
                         app:layout_constraintTop_toTopOf="@id/tv_name"
@@ -122,7 +168,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="TextView"
+                        android:text="@{planet.population}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_population"
                         app:layout_constraintStart_toEndOf="@id/tv_population"
@@ -143,7 +189,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:text="TextView"
+                        android:text="@{planet.gravity}"
                         android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_gravity"
                         app:layout_constraintStart_toEndOf="@id/tv_gravity"
@@ -155,6 +201,7 @@
                         style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -174,15 +221,38 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/card_elevation">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/species_error_layout"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_species_error"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        tools:text="Error"/>
+                    <ImageButton
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/retry" />
+                </LinearLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/species_success_layout"
                     android:padding="4dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rv_species"
+                        app:items="@{species}"
+                        android:visibility="@{!species.empty ? View.VISIBLE : View.GONE}"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -190,12 +260,23 @@
                         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                         app:spanCount="2"
                         tools:listitem="@layout/list_item_specie"/>
-
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty_result"
+                        android:gravity="center"
+                        android:visibility="@{species.empty ? View.VISIBLE : View.GONE}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
                     <ProgressBar
                         android:id="@+id/species_progressBar"
                         style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -215,15 +296,38 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/card_elevation">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/films_error_layout"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_films_error"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        tools:text="Error"/>
+                    <ImageButton
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/retry" />
+                </LinearLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/films_success_layout"
                     android:padding="4dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rv_films"
+                        app:items="@{films}"
+                        android:visibility="@{!films.empty ? View.VISIBLE : View.GONE}"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -231,12 +335,24 @@
                         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                         app:spanCount="2"
                         tools:listitem="@layout/list_item_film"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty_result"
+                        android:gravity="center"
+                        android:visibility="@{films.empty ? View.VISIBLE : View.GONE}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
                     <ProgressBar
                         android:id="@+id/films_progressBar"
                         style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -256,15 +372,38 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/card_elevation">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/starships_error_layout"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_starships_error"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        tools:text="Error"/>
+                    <ImageButton
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/retry" />
+                </LinearLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/starships_success_layout"
                     android:padding="4dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rv_starships"
+                        app:items="@{starships}"
+                        android:visibility="@{!starships.empty ? View.VISIBLE : View.GONE}"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -272,12 +411,23 @@
                         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                         app:spanCount="2"
                         tools:listitem="@layout/list_item_starship"/>
-
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty_result"
+                        android:gravity="center"
+                        android:visibility="@{starships.empty ? View.VISIBLE : View.GONE}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
                     <ProgressBar
                         android:id="@+id/starships_progressBar"
                         style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -297,15 +447,38 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="@dimen/card_corner_radius"
                 app:cardElevation="@dimen/card_elevation">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/vehicles_error_layout"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_vehicles_error"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        tools:text="Error"/>
+                    <ImageButton
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:contentDescription="@string/retry" />
+                </LinearLayout>
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/vehicles_success_layout"
                     android:padding="4dp">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/rv_vehicles"
+                        app:items="vehicles"
+                        android:visibility="@{!vehicles.empty ? View.VISIBLE : View.GONE}"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -313,12 +486,23 @@
                         app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
                         app:spanCount="2"
                         tools:listitem="@layout/list_item_vehicle"/>
-
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty_result"
+                        android:gravity="center"
+                        android:visibility="@{vehicles.empty ? View.VISIBLE : View.GONE}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
                     <ProgressBar
                         android:id="@+id/vehicles_progressBar"
                         style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

@@ -1,30 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_margin="4dp"
-    android:background="@drawable/list_item_background"
-    android:padding="4dp">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-        tools:text="A New Hope" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_marginTop="4dp"
-        tools:text="Producer(s): Gary Kurtz, Rick McCallum" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title"
-        android:layout_marginTop="4dp"
-        tools:text="It is a period of civil war.Rebel spaceships, striking..." />
+<layout>
 
-</LinearLayout>
+    <data>
+        <variable
+            name="film"
+            type="com.arch.starwarssearch.model.FilmPresentation" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:background="@drawable/list_item_background"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{film.title}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            tools:text="A New Hope" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            app:producerText="@{film.producer}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="Producer(s): Gary Kurtz, Rick McCallum" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{film.openingCrawl}"
+            tools:text="It is a period of civil war.Rebel spaceships, striking..." />
+
+    </LinearLayout>
+</layout>

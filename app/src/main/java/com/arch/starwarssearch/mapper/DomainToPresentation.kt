@@ -1,8 +1,27 @@
 package com.arch.starwarssearch.mapper
 
-import com.arch.starwarssearch.model.Character
-import com.arch.starwarssearch.model.CharacterPresentation
+import com.arch.starwarssearch.model.*
 
-fun Character.toEntity(): CharacterPresentation {
+fun Character.toPresentation(): CharacterPresentation {
     return CharacterPresentation(name, height, birthYear, url)
+}
+
+fun Planet.toPresentation(): PlanetPresentation {
+    return PlanetPresentation(name, population, gravity)
+}
+
+fun Specie.toPresentation(): SpeciePresentation {
+    return SpeciePresentation(name, language)
+}
+
+fun Film.toPresentation(): FilmPresentation{
+    return FilmPresentation(title, producer, openingCrawl)
+}
+
+fun StarShip.toPresentation(): StarshipPresentation{
+    return StarshipPresentation(name, model, manufacturer, passengers)
+}
+
+fun Vehicle.toPresentation(): VehiclePresentation {
+    return VehiclePresentation(name, model, manufacturer, passengers)
 }

@@ -5,7 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/list_item_background.xml" value="0.2665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24739583333333334" />
-        <entry key="app/src/main/res/layout/fragment_character_detail.xml" value="0.35625" />
+        <entry key="app/src/main/res/layout/fragment_character_detail.xml" value="0.19" />
         <entry key="app/src/main/res/layout/fragment_character_search.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/list_item_character.xml" value="0.21965579710144928" />
         <entry key="app/src/main/res/layout/list_item_film.xml" value="0.35625" />

@@ -1,7 +1,7 @@
 package com.arch.starwarssearch.ui.charactersearch
 
 import androidx.lifecycle.*
-import com.arch.starwarssearch.mapper.toEntity
+import com.arch.starwarssearch.mapper.toPresentation
 import com.arch.starwarssearch.model.CharacterPresentation
 import com.arch.starwarssearch.usecases.SearchCharacterUseCase
 import com.arch.starwarssearch.util.NO_INTERNET
@@ -45,7 +45,7 @@ class CharacterSearchViewModel @Inject constructor(
         result.value = Result.Loading
         job = viewModelScope.launch(coroutineExceptionHandler) {
             searchCharacterUseCase(characterName).collect { results ->
-                val characters = results.map { it.toEntity() }
+                val characters = results.map { it.toPresentation() }
                 result.value = Result.Success(characters)
             }
         }
