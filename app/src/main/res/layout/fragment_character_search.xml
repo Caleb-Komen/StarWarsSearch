@@ -2,40 +2,64 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <import type="com.arch.starwarssearch.model.CharacterPresentation" />
+
         <import type="java.util.List" />
+
         <variable
             name="characters"
             type="List&lt;CharacterPresentation>" />
     </data>
+
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="8dp"
         tools:context=".ui.charactersearch.CharacterSearchFragment">
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/linear_progress"
-            android:visibility="gone"/>
+            android:id="@+id/app_bar">
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="@string/app_name"
+                app:titleTextColor="@color/white" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <EditText
-            android:id="@+id/et_search_field"
-            style="@style/Widget.AppCompat.SearchView.ActionBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@android:drawable/ic_menu_search"
-            android:hint="@string/character_name" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_characters"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:items="@{characters}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_item_character" />
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ProgressBar
+                android:id="@+id/linear_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:indeterminate="true"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/et_search_field"
+                style="@style/Widget.AppCompat.SearchView.ActionBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:hint="@string/character_name" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_characters"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:items="@{characters}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_item_character" />
+        </LinearLayout>
     </LinearLayout>
 </layout>
