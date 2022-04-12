@@ -56,7 +56,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/height"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@{character.height}"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_height"
                         app:layout_constraintStart_toEndOf="@id/tv_height"
                         app:layout_constraintTop_toTopOf="@+id/tv_height"
@@ -78,7 +79,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="@string/birth_year"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_height" />
 
@@ -88,7 +90,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="@{character.birthYear}"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_birth_year"
                         app:layout_constraintStart_toEndOf="@id/tv_birth_year"
                         app:layout_constraintTop_toTopOf="@+id/tv_birth_year"
@@ -100,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_planet"
                 android:text="@string/planet"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp" />
             <com.google.android.material.card.MaterialCardView
@@ -213,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_species"
                 android:text="@string/species"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp" />
             <com.google.android.material.card.MaterialCardView
@@ -288,7 +290,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_films"
                 android:text="@string/films"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp" />
             <com.google.android.material.card.MaterialCardView
@@ -364,7 +366,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_star_ships"
                 android:text="@string/starships"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp" />
             <com.google.android.material.card.MaterialCardView
@@ -439,7 +441,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_vehicles"
                 android:text="@string/vehicles"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp" />
             <com.google.android.material.card.MaterialCardView

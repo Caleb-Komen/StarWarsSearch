@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:text="@{film.title}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textStyle="bold"
             tools:text="A New Hope" />
 
         <TextView

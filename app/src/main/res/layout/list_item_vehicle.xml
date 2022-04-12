@@ -26,11 +26,12 @@
 
         <TextView
             android:id="@+id/tv_vehicle_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@{vehicle.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_name"
             app:layout_constraintTop_toTopOf="@id/tv_name"
             tools:text="Snowspeeder" />
@@ -42,15 +43,16 @@
             android:layout_marginTop="8dp"
             android:text="@string/model"
             app:layout_constraintStart_toStartOf="@id/tv_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+            app:layout_constraintTop_toBottomOf="@id/tv_vehicle_name" />
 
         <TextView
             android:id="@+id/tv_vehicle_model"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@{vehicle.model}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_model"
             app:layout_constraintTop_toTopOf="@+id/tv_model"
             tools:text="t-47 airspeeder" />
@@ -62,15 +64,16 @@
             android:layout_marginTop="8dp"
             android:text="@string/manufacturer"
             app:layout_constraintStart_toStartOf="@id/tv_model"
-            app:layout_constraintTop_toBottomOf="@id/tv_model" />
+            app:layout_constraintTop_toBottomOf="@id/tv_vehicle_model" />
 
         <TextView
             android:id="@+id/tv_vehicle_manufacturer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@{vehicle.manufacturer}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_manufacturer"
             app:layout_constraintTop_toTopOf="@+id/tv_manufacturer"
             tools:text="Incom corporation" />
@@ -82,15 +85,16 @@
             android:layout_marginTop="8dp"
             android:text="@string/passengers"
             app:layout_constraintStart_toStartOf="@id/tv_manufacturer"
-            app:layout_constraintTop_toBottomOf="@id/tv_manufacturer" />
+            app:layout_constraintTop_toBottomOf="@id/tv_vehicle_manufacturer" />
 
         <TextView
             android:id="@+id/tv_vehicle_passengers"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@{vehicle.passengers}"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_passengers"
             app:layout_constraintTop_toTopOf="@+id/tv_passengers"
             tools:text="0" />
