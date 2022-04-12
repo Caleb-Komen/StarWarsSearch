@@ -38,19 +38,18 @@ class CharacterDetailViewModel @Inject constructor(
     private val _vehicles = characterUrl.switchMap { getCharacterVehicles(it) }
     val vehicles: LiveData<Result<List<VehiclePresentation>>> get() = _vehicles
 
-    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-        when (throwable){
-            is UnknownHostException -> Result.Error(NO_INTERNET)
-            else -> Result.Error(UNKNOWN_ERROR)
-        }
-    }
-
     fun setCharacterUrl(url: String){
         characterUrl.value = url
     }
 
     private fun getCharacterPlanet(url: String):LiveData<Result<PlanetPresentation>> {
         val result = MutableLiveData<Result<PlanetPresentation>>()
+        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            when (throwable){
+                is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
+                else -> result.value = Result.Error(UNKNOWN_ERROR)
+            }
+        }
         viewModelScope.launch(coroutineExceptionHandler) {
             result.value = Result.Loading
             getCharacterPlanetUseCase(url).collect{ planet ->
@@ -62,6 +61,12 @@ class CharacterDetailViewModel @Inject constructor(
 
     private fun getCharacterFilms(url: String): LiveData<Result<List<FilmPresentation>>>{
         val result = MutableLiveData<Result<List<FilmPresentation>>>()
+        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            when (throwable){
+                is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
+                else -> result.value = Result.Error(UNKNOWN_ERROR)
+            }
+        }
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterFilmsUseCase(url).collect{ films ->
@@ -73,6 +78,12 @@ class CharacterDetailViewModel @Inject constructor(
 
     private fun getCharacterSpecies(url: String): LiveData<Result<List<SpeciePresentation>>>{
         val result = MutableLiveData<Result<List<SpeciePresentation>>>()
+        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            when (throwable){
+                is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
+                else -> result.value = Result.Error(UNKNOWN_ERROR)
+            }
+        }
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterSpeciesUseCase(url).collect{ species ->
@@ -84,6 +95,12 @@ class CharacterDetailViewModel @Inject constructor(
 
     private fun getCharacterStarships(url: String): LiveData<Result<List<StarshipPresentation>>>{
         val result = MutableLiveData<Result<List<StarshipPresentation>>>()
+        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            when (throwable){
+                is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
+                else -> result.value = Result.Error(UNKNOWN_ERROR)
+            }
+        }
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterStarshipsUseCase(url).collect{ starships ->
@@ -95,6 +112,12 @@ class CharacterDetailViewModel @Inject constructor(
 
     private fun getCharacterVehicles(url: String): LiveData<Result<List<VehiclePresentation>>>{
         val result = MutableLiveData<Result<List<VehiclePresentation>>>()
+        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            when (throwable){
+                is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
+                else -> result.value = Result.Error(UNKNOWN_ERROR)
+            }
+        }
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterVehiclesUseCase(url).collect{ vehicles ->
