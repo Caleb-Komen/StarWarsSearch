@@ -86,6 +86,7 @@ class CharacterDetailFragment : Fragment() {
                 binding.vehiclesProgressBar.visibility = View.GONE
                 binding.vehiclesErrorLayout.visibility = View.VISIBLE
                 binding.vehiclesSuccessLayout.visibility = View.GONE
+                binding.tvVehiclesError.text = result.message
             }
             is Loading -> binding.vehiclesProgressBar.visibility = View.VISIBLE
         }
@@ -103,6 +104,7 @@ class CharacterDetailFragment : Fragment() {
                 binding.starshipsProgressBar.visibility = View.GONE
                 binding.starshipsErrorLayout.visibility = View.VISIBLE
                 binding.starshipsSuccessLayout.visibility = View.GONE
+                binding.tvStarshipsError.text = result.message
             }
             is Loading -> binding.starshipsProgressBar.visibility = View.VISIBLE
         }
@@ -120,6 +122,7 @@ class CharacterDetailFragment : Fragment() {
                 binding.filmsProgressBar.visibility = View.GONE
                 binding.filmsErrorLayout.visibility = View.VISIBLE
                 binding.filmsSuccessLayout.visibility = View.GONE
+                binding.tvFilmsError.text = result.message
             }
             is Loading -> binding.filmsProgressBar.visibility = View.VISIBLE
         }
@@ -137,6 +140,7 @@ class CharacterDetailFragment : Fragment() {
                 binding.speciesProgressBar.visibility = View.GONE
                 binding.speciesErrorLayout.visibility = View.VISIBLE
                 binding.speciesSuccessLayout.visibility = View.GONE
+                binding.tvSpeciesError.text = result.message
             }
             is Loading -> binding.speciesProgressBar.visibility = View.VISIBLE
         }
@@ -154,6 +158,7 @@ class CharacterDetailFragment : Fragment() {
                 binding.planetProgressBar.visibility = View.GONE
                 binding.planetErrorLayout.visibility = View.VISIBLE
                 binding.planetSuccessLayout.visibility = View.GONE
+                binding.tvPlanetError.text = result.message
             }
             is Loading -> binding.planetProgressBar.visibility = View.VISIBLE
         }
