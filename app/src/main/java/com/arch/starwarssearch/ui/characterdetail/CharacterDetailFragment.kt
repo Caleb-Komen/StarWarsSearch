@@ -5,12 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
+import com.arch.starwarssearch.R
 import com.arch.starwarssearch.databinding.FragmentCharacterDetailBinding
 import com.arch.starwarssearch.model.*
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.Result.*
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -18,17 +20,9 @@ class CharacterDetailFragment : Fragment() {
     private var _binding: FragmentCharacterDetailBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: CharacterDetailViewModel by viewModels()
+    private val viewModel: CharacterDetailViewModel by activityViewModels()
 
     private val args: CharacterDetailFragmentArgs by navArgs()
-
-    private val speciesAdapter = SpeciesAdapter()
-
-    private val filmsAdapter = FilmsAdapter()
-
-    private val starshipsAdapter = StarshipsAdapter()
-
-    private val vehiclesAdapter = VehiclesAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +30,13 @@ class CharacterDetailFragment : Fragment() {
     ): View? {
         _binding = FragmentCharacterDetailBinding.inflate(inflater, container, false).apply {
             character = args.character
-            rvSpecies.adapter = speciesAdapter
-            rvFilms.adapter = filmsAdapter
-            rvStarships.adapter = starshipsAdapter
-            rvVehicles.adapter = vehiclesAdapter
         }
+        val tabLayout = binding.tabLayout
+        val viewPager = binding.viewPager
+        viewPager.adapter = CharacterDetailPagerAdapter(this)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = getTabTitle(position)
+        }.attach()
         return binding.root
     }
 
@@ -54,95 +50,6 @@ class CharacterDetailFragment : Fragment() {
         viewModel.planet.observe(viewLifecycleOwner){
             val result = it ?: return@observe
             bindPlanet(result)
-        }
-        viewModel.species.observe(viewLifecycleOwner){
-            val result = it ?: return@observe
-            bindSpecies(result)
-        }
-        viewModel.films.observe(viewLifecycleOwner){
-            val result = it ?: return@observe
-            bindFilms(result)
-        }
-        viewModel.starships.observe(viewLifecycleOwner){
-            val result = it ?: return@observe
-            bindStarships(result)
-
-        }
-        viewModel.vehicles.observe(viewLifecycleOwner){
-            val result = it ?: return@observe
-            bindVehicles(result)
-        }
-    }
-
-    private fun bindVehicles(result: Result<List<VehiclePresentation>>) {
-        when (result){
-            is Success -> {
-                binding.vehiclesProgressBar.visibility = View.GONE
-                binding.vehiclesErrorLayout.visibility = View.GONE
-                binding.vehiclesSuccessLayout.visibility = View.VISIBLE
-                binding.vehicles = result.data
-            }
-            is Error -> {
-                binding.vehiclesProgressBar.visibility = View.GONE
-                binding.vehiclesErrorLayout.visibility = View.VISIBLE
-                binding.vehiclesSuccessLayout.visibility = View.GONE
-                binding.tvVehiclesError.text = result.message
-            }
-            is Loading -> binding.vehiclesProgressBar.visibility = View.VISIBLE
-        }
-    }
-
-    private fun bindStarships(result: Result<List<StarshipPresentation>>) {
-        when (result){
-            is Success -> {
-                binding.starshipsProgressBar.visibility = View.GONE
-                binding.starshipsErrorLayout.visibility = View.GONE
-                binding.starshipsSuccessLayout.visibility = View.VISIBLE
-                binding.starships = result.data
-            }
-            is Error -> {
-                binding.starshipsProgressBar.visibility = View.GONE
-                binding.starshipsErrorLayout.visibility = View.VISIBLE
-                binding.starshipsSuccessLayout.visibility = View.GONE
-                binding.tvStarshipsError.text = result.message
-            }
-            is Loading -> binding.starshipsProgressBar.visibility = View.VISIBLE
-        }
-    }
-
-    private fun bindFilms(result: Result<List<FilmPresentation>>) {
-        when (result){
-            is Success -> {
-                binding.filmsProgressBar.visibility = View.GONE
-                binding.filmsErrorLayout.visibility = View.GONE
-                binding.filmsSuccessLayout.visibility = View.VISIBLE
-                binding.films = result.data
-            }
-            is Error -> {
-                binding.filmsProgressBar.visibility = View.GONE
-                binding.filmsErrorLayout.visibility = View.VISIBLE
-                binding.filmsSuccessLayout.visibility = View.GONE
-                binding.tvFilmsError.text = result.message
-            }
-            is Loading -> binding.filmsProgressBar.visibility = View.VISIBLE
-        }
-    }
-
-    private fun bindSpecies(result: Result<List<SpeciePresentation>>) {
-        when (result){
-            is Success -> {
-                binding.speciesProgressBar.visibility = View.GONE
-                binding.speciesErrorLayout.visibility = View.GONE
-                binding.speciesSuccessLayout.visibility = View.VISIBLE
-                binding.species = result.data
-            }
-            is Error -> {
-                binding.speciesProgressBar.visibility = View.GONE
-                binding.speciesErrorLayout.visibility = View.VISIBLE
-                binding.speciesSuccessLayout.visibility = View.GONE
-                binding.tvSpeciesError.text = result.message
-            }
-            is Loading -> binding.speciesProgressBar.visibility = View.VISIBLE
         }
     }
 
@@ -161,6 +68,16 @@ class CharacterDetailFragment : Fragment() {
                 binding.tvPlanetError.text = result.message
             }
             is Loading -> binding.planetProgressBar.visibility = View.VISIBLE
+        }
+    }
+
+    private fun getTabTitle(position: Int): String?{
+        return when (position){
+            FILMS_PAGE_INDEX -> getString(R.string.films)
+            SPECIES_PAGE_INDEX -> getString(R.string.species)
+            STARSHIPS_PAGE_INDEX -> getString(R.string.starships)
+            VEHICLES_PAGE_INDEX -> getString(R.string.vehicles)
+            else -> null
         }
     }
 
