@@ -23,209 +23,226 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:cardCornerRadius="@dimen/card_corner_radius"
-                        app:cardElevation="@dimen/card_elevation">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="8dp">
-
-                            <TextView
-                                android:id="@+id/tv_height"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/height"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <TextView
-                                android:id="@+id/tv_character_height"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@{character.height}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_height"
-                                app:layout_constraintStart_toEndOf="@id/tv_height"
-                                app:layout_constraintTop_toTopOf="@+id/tv_height"
-                                tools:text="1.91" />
-
-                            <TextView
-                                android:id="@+id/tv_birth_year"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="@string/birth_year"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textStyle="bold"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tv_height" />
-
-                            <TextView
-                                android:id="@+id/tv_character_birth_year"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@{character.birthYear}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_birth_year"
-                                app:layout_constraintStart_toEndOf="@id/tv_birth_year"
-                                app:layout_constraintTop_toTopOf="@+id/tv_birth_year"
-                                tools:text="1980" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
                     <TextView
-                        android:id="@+id/tv_planet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/planet"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
-
-                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tv_name_initials"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textStyle="bold"
+                        android:background="@drawable/rounded_grey_background"
+                        android:gravity="center"
+                        android:fontFamily="@font/grape_nuts_regular"
+                        tools:text="LS" />
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="@dimen/card_corner_radius"
-                        app:cardElevation="@dimen/card_elevation">
-
-                        <LinearLayout
-                            android:id="@+id/planet_error_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:visibility="gone">
-
-                            <TextView
-                                android:id="@+id/tv_planet_error"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                tools:text="Error" />
-
-                            <ImageButton
-                                android:layout_width="36dp"
-                                android:layout_height="36dp"
-                                android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="@string/retry"
-                                android:src="@drawable/ic_baseline_refresh_24" />
-                        </LinearLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/planet_success_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="4dp">
-
-                            <TextView
-                                android:id="@+id/tv_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/name"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_planet_name"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/tv_planet_name" />
-
-                            <TextView
-                                android:id="@+id/tv_planet_name"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@{planet.name}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                app:layout_constraintStart_toEndOf="@id/tv_name"
-                                app:layout_constraintTop_toTopOf="@id/tv_name"
-                                tools:text="Tatooine" />
-
-                            <TextView
-                                android:id="@+id/tv_population"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="@string/population"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tv_name" />
-
-                            <TextView
-                                android:id="@+id/tv_planet_population"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@{planet.population}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_population"
-                                app:layout_constraintStart_toEndOf="@id/tv_population"
-                                app:layout_constraintTop_toTopOf="@+id/tv_population"
-                                tools:text="10000" />
-
-                            <TextView
-                                android:id="@+id/tv_gravity"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:text="@string/gravity"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@id/tv_population" />
-
-                            <TextView
-                                android:id="@+id/tv_planet_gravity"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@{planet.gravity}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_gravity"
-                                app:layout_constraintStart_toEndOf="@id/tv_gravity"
-                                app:layout_constraintTop_toTopOf="@+id/tv_gravity"
-                                tools:text="1" />
-
-                            <ProgressBar
-                                android:id="@+id/planet_progressBar"
-                                style="?android:attr/progressBarStyle"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-                    </com.google.android.material.card.MaterialCardView>
-
+                        android:text="@{character.name}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:fontFamily="sans-serif-condensed-medium"
+                        android:layout_marginStart="8dp"
+                        tools:text="Luke Skywalker" />
                 </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_height"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/height"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_character_height"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{character.height}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_height"
+                            app:layout_constraintStart_toEndOf="@id/tv_height"
+                            app:layout_constraintTop_toTopOf="@+id/tv_height"
+                            tools:text="1.91" />
+
+                        <TextView
+                            android:id="@+id/tv_birth_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/birth_year"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textStyle="bold"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_height" />
+
+                        <TextView
+                            android:id="@+id/tv_character_birth_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{character.birthYear}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_birth_year"
+                            app:layout_constraintStart_toEndOf="@id/tv_birth_year"
+                            app:layout_constraintTop_toTopOf="@+id/tv_birth_year"
+                            tools:text="1980" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/tv_planet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/planet"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="@dimen/card_corner_radius"
+                    app:cardElevation="@dimen/card_elevation">
+
+                    <LinearLayout
+                        android:id="@+id/planet_error_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_planet_error"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            tools:text="Error" />
+
+                        <ImageButton
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="@string/retry"
+                            android:src="@drawable/ic_baseline_refresh_24" />
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/planet_success_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:id="@+id/tv_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/name"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_planet_name"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/tv_planet_name" />
+
+                        <TextView
+                            android:id="@+id/tv_planet_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{planet.name}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            app:layout_constraintStart_toEndOf="@id/tv_name"
+                            app:layout_constraintTop_toTopOf="@id/tv_name"
+                            tools:text="Tatooine" />
+
+                        <TextView
+                            android:id="@+id/tv_population"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/population"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+                        <TextView
+                            android:id="@+id/tv_planet_population"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{planet.population}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_population"
+                            app:layout_constraintStart_toEndOf="@id/tv_population"
+                            app:layout_constraintTop_toTopOf="@+id/tv_population"
+                            tools:text="10000" />
+
+                        <TextView
+                            android:id="@+id/tv_gravity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/gravity"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tv_population" />
+
+                        <TextView
+                            android:id="@+id/tv_planet_gravity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@{planet.gravity}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            app:layout_constraintBottom_toBottomOf="@+id/tv_gravity"
+                            app:layout_constraintStart_toEndOf="@id/tv_gravity"
+                            app:layout_constraintTop_toTopOf="@+id/tv_gravity"
+                            tools:text="1" />
+
+                        <ProgressBar
+                            android:id="@+id/planet_progressBar"
+                            style="?android:attr/progressBarStyle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
             </LinearLayout>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:tabIndicator="@drawable/tab_indicator"
-                app:tabIndicatorColor="@color/red_500"
-                app:tabIndicatorFullWidth="false"
-                app:tabIndicatorHeight="4dp"
-                app:tabMode="scrollable"
-                app:tabRippleColor="@null"
-                app:tabSelectedTextColor="@color/red_500">
+                android:layout_marginTop="8dp"
+                style="@style/CustomTabLayout">
 
                 <com.google.android.material.tabs.TabItem
                     android:id="@+id/tab_films"

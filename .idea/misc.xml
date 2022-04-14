@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/list_item_background.xml" value="0.2665" />
+        <entry key="app/src/main/res/drawable/rounded_grey_background.xml" value="0.2665" />
         <entry key="app/src/main/res/drawable/tab_indicator.xml" value="0.2665" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24739583333333334" />
         <entry key="app/src/main/res/layout/fragment_character_detail.xml" value="0.33" />

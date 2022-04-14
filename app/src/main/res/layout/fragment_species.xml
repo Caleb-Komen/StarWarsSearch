@@ -66,6 +66,7 @@
                 android:gravity="center"
                 android:text="@string/empty_result"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:fontFamily="sans-serif-medium"
                 android:visibility="@{species.empty ? View.VISIBLE : View.GONE}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

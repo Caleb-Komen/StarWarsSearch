@@ -13,4 +13,18 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+        <item name="indicatorColor">@color/red_500</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabTextAppearance">@style/CustomTabTextAppearance</item> <!-- app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget" -->
+        <item name="tabMode">scrollable</item>
+        <item name="tabRippleColor">@null</item>
+        <item name="tabSelectedTextColor">@color/red_500</item>
+    </style>
+    <style name="CustomTabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+        <item name="textAllCaps">false</item>
+    </style>
 </resources>

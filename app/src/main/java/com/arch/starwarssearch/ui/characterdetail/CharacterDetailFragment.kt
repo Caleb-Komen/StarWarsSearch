@@ -31,6 +31,7 @@ class CharacterDetailFragment : Fragment() {
         _binding = FragmentCharacterDetailBinding.inflate(inflater, container, false).apply {
             character = args.character
         }
+        binding.tvNameInitials.text = extractCharacterNameInitials(args.character.name)
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager
         viewPager.adapter = CharacterDetailPagerAdapter(this)
@@ -79,6 +80,15 @@ class CharacterDetailFragment : Fragment() {
             VEHICLES_PAGE_INDEX -> getString(R.string.vehicles)
             else -> null
         }
+    }
+
+    private fun extractCharacterNameInitials(characterName: String): String{
+        val nameList = characterName.split(" ")
+        val initials = StringBuilder()
+        for (name in nameList){
+            initials.append(name[0])
+        }
+        return initials.toString().uppercase()
     }
 
     override fun onDestroyView() {
