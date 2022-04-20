@@ -21,15 +21,17 @@
             android:id="@+id/species_error_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:gravity="center"
             android:visibility="gone">
 
             <TextView
                 android:id="@+id/tv_species_error"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center_horizontal"
                 tools:text="Error" />
 
             <ImageButton
