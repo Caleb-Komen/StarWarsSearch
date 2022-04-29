@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.8">
       <module name="StarWarsSearch.app" target="11" />
       <module name="StarWarsSearch.buildSrc" target="11" />
+      <module name="StarWarsSearch.data" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
