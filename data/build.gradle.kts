@@ -1,6 +1,7 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -39,6 +40,8 @@ dependencies {
     implementation(Dependencies.okHttpLogging)
     implementation(Dependencies.coroutinesCore)
     implementation(Dependencies.hiltCore)
+    implementation(Dependencies.roomRuntime)
+    kapt(Dependencies.roomCompiler)
 
     testImplementation(TestDependencies.junit4)
     testImplementation(TestDependencies.mockWebServer)

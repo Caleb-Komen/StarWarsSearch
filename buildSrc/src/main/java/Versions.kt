@@ -17,6 +17,7 @@ object Versions {
     const val legacySupport = "1.0.0"
     const val fragmentKtx = "1.4.1"
     const val navigation = "2.4.2"
+    const val room = "2.4.2"
 
     const val junit = "4.13.2"
     const val testJunit = "1.1.3"
