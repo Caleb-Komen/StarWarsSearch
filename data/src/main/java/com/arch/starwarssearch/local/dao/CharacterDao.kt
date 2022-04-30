@@ -11,8 +11,8 @@ interface CharacterDao {
     suspend fun getCharacters(): List<CharacterLocalEntity>
 
     @Transaction
-    @Query("SELECT * FROM characters")
-    suspend fun getCharacterById(id: String): CharacterWithDetails
+    @Query("SELECT * FROM characters WHERE id = :url")
+    suspend fun getCharacterByUrl(url: String): CharacterWithDetails
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacter(character: CharacterLocalEntity)
