@@ -12,7 +12,7 @@ interface CharacterDao {
 
     @Transaction
     @Query("SELECT * FROM characters")
-    suspend fun getCharacterById(id: String): List<CharacterWithDetails>
+    suspend fun getCharacterById(id: String): CharacterWithDetails
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacter(character: CharacterLocalEntity)
