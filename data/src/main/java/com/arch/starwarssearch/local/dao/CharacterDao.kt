@@ -1,11 +1,9 @@
 package com.arch.starwarssearch.local.dao
 
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Transaction
+import androidx.room.*
 import com.arch.starwarssearch.local.model.*
 
+@Dao
 interface CharacterDao {
     @Query("SELECT * FROM characters")
     suspend fun getCharacters(): List<CharacterLocalEntity>
