@@ -19,4 +19,5 @@ object Dependencies {
     const val navigationUI = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
     const val roomRuntime = "androidx.room:room-runtime:${Versions.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Versions.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
 }

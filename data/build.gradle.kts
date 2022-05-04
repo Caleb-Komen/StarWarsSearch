@@ -42,6 +42,7 @@ dependencies {
     implementation(Dependencies.hiltCore)
     implementation(Dependencies.roomRuntime)
     kapt(Dependencies.roomCompiler)
+    implementation(Dependencies.roomKtx)
 
     testImplementation(TestDependencies.junit4)
     testImplementation(TestDependencies.mockWebServer)
