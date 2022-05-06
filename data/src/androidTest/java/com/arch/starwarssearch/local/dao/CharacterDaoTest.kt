@@ -75,6 +75,7 @@ class CharacterDaoTest {
 
         // Then the loaded character contains the expected values
         Truth.assertThat(result).isNotNull()
+        result!!
         Truth.assertThat(result.characterLocalEntity.name).matches("Luke Skywalker")
         Truth.assertThat(result.planetLocalEntity.name).matches("Tatooine")
         Truth.assertThat(result.specieLocalEntities.size).isAtLeast(1)

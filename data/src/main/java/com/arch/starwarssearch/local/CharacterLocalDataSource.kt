@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 interface CharacterLocalDataSource {
     fun getCharacters(): Flow<List<Character>>
 
-    fun getCharacterByUrl(url: String): Flow<CharacterWithDetails>
+    fun getCharacterByUrl(url: String): Flow<CharacterWithDetails?>
 
     suspend fun insertCharacter(characterWithDetails: CharacterWithDetails)
 

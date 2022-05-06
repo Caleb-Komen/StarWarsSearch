@@ -15,8 +15,8 @@ class CharacterLocalDataSourceImpl(private val characterDao: CharacterDao): Char
         emit(characters)
     }
 
-    override fun getCharacterByUrl(url: String): Flow<CharacterWithDetails> = flow{
-        val character = characterDao.getCharacterByUrl(url).toDomain()
+    override fun getCharacterByUrl(url: String): Flow<CharacterWithDetails?> = flow{
+        val character = characterDao.getCharacterByUrl(url)?.toDomain()
         emit(character)
     }
 

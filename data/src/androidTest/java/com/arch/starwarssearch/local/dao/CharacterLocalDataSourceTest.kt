@@ -66,6 +66,7 @@ class CharacterLocalDataSourceTest {
 
         result.collect {
             Truth.assertThat(it).isNotNull()
+            it!!
             Truth.assertThat(it.character.name).matches("Luke Skywalker")
             Truth.assertThat(it.films.size).isAtLeast(1)
         }
