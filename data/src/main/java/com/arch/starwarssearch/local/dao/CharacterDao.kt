@@ -10,7 +10,7 @@ interface CharacterDao {
 
     @Transaction
     @Query("SELECT * FROM characters WHERE id = :url")
-    suspend fun getCharacterByUrl(url: String): CharacterWithDetails
+    suspend fun getCharacterByUrl(url: String): CharacterWithDetailsLocalEntity
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacter(character: CharacterLocalEntity)
@@ -37,19 +37,19 @@ interface CharacterDao {
     suspend fun deleteAll()
 
     @Transaction
-    suspend fun insertCharacter(character: CharacterWithDetails){
-        insertCharacter(character.characterLocalEntity)
-        insertPlanet(character.planetLocalEntity)
-        for(specie in character.specieLocalEntities){
+    suspend fun insertCharacter(characterLocalEntity: CharacterWithDetailsLocalEntity){
+        insertCharacter(characterLocalEntity.characterLocalEntity)
+        insertPlanet(characterLocalEntity.planetLocalEntity)
+        for(specie in characterLocalEntity.specieLocalEntities){
             insertSpecie(specie)
         }
-        for(film in character.filmLocalEntities){
+        for(film in characterLocalEntity.filmLocalEntities){
             insertFilm(film)
         }
-        for(starship in character.starshipLocalEntities){
+        for(starship in characterLocalEntity.starshipLocalEntities){
             insertStarship(starship)
         }
-        for(vehicle in character.vehicleLocalEntities){
+        for(vehicle in characterLocalEntity.vehicleLocalEntities){
             insertVehicle(vehicle)
         }
     }

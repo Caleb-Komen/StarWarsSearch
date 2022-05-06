@@ -44,8 +44,8 @@ class CharacterDaoTest {
     @Test
     fun insertCharactersAndGetAllCharacters()= runTest {
         // Given that we save characters
-        val character1 = CharacterWithDetails(characterEntity1, planet1, listOf(film1), listOf(specie), listOf(starship), listOf(vehicle))
-        val character2 = CharacterWithDetails(characterEntity2, planet2, listOf(film2), emptyList(), emptyList(), emptyList())
+        val character1 = CharacterWithDetailsLocalEntity(characterEntity1, planet1, listOf(film1), listOf(specie), listOf(starship), listOf(vehicle))
+        val character2 = CharacterWithDetailsLocalEntity(characterEntity2, planet2, listOf(film2), emptyList(), emptyList(), emptyList())
         characterDao.insertCharacter(character1)
         characterDao.insertCharacter(character2)
 
@@ -60,7 +60,7 @@ class CharacterDaoTest {
     @Test
     fun insertCharacterAndGetByUrl() = runTest {
         // Given that we save a character with all its details
-        val character = CharacterWithDetails(
+        val character = CharacterWithDetailsLocalEntity(
             characterEntity1,
             planet1,
             listOf(film1),
@@ -86,7 +86,7 @@ class CharacterDaoTest {
     @Test
     fun deleteCharacterByUrlAndGetByUrl() = runTest {
         // Given that we save a character with all its details
-        val character = CharacterWithDetails(
+        val character = CharacterWithDetailsLocalEntity(
             characterEntity1,
             planet1,
             listOf(film1),
@@ -107,8 +107,8 @@ class CharacterDaoTest {
     @Test
     fun deleteCharactersAndGetCharacters()= runTest {
         // Given that we save characters
-        val character1 = CharacterWithDetails(characterEntity1, planet1, listOf(film1), listOf(specie), listOf(starship), listOf(vehicle))
-        val character2 = CharacterWithDetails(characterEntity2, planet2, listOf(film2), emptyList(), emptyList(), emptyList())
+        val character1 = CharacterWithDetailsLocalEntity(characterEntity1, planet1, listOf(film1), listOf(specie), listOf(starship), listOf(vehicle))
+        val character2 = CharacterWithDetailsLocalEntity(characterEntity2, planet2, listOf(film2), emptyList(), emptyList(), emptyList())
         characterDao.insertCharacter(character1)
         characterDao.insertCharacter(character2)
 

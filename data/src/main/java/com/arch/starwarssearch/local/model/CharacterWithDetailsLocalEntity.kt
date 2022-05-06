@@ -3,7 +3,7 @@ package com.arch.starwarssearch.local.model
 import androidx.room.Embedded
 import androidx.room.Relation
 
-data class CharacterWithDetails(
+data class CharacterWithDetailsLocalEntity(
     @Embedded
     val characterLocalEntity: CharacterLocalEntity,
     @Relation(
