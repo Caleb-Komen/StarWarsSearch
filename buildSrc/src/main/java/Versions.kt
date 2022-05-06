@@ -20,9 +20,10 @@ object Versions {
     const val room = "2.4.2"
 
     const val junit = "4.13.2"
-    const val testJunit = "1.1.3"
+    const val testExtJunit = "1.1.3"
     const val espresso = "3.4.0"
     const val mockWebServer = "4.9.3"
     const val truth = "1.1.3"
     const val archCoreTesting = "2.1.0"
+    const val testRunner = "1.4.0"
 }

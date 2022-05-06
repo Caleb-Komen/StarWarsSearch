@@ -61,6 +61,6 @@ dependencies {
     testImplementation TestDependencies.truth
     testImplementation TestDependencies.coroutinesTest
     testImplementation TestDependencies.archCoreTesting
-    androidTestImplementation AndroidTestDependencies.testJunit
+    androidTestImplementation AndroidTestDependencies.testExtJunit
     androidTestImplementation AndroidTestDependencies.espresso
 }

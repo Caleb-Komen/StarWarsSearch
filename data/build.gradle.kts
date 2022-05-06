@@ -47,4 +47,11 @@ dependencies {
     testImplementation(TestDependencies.junit4)
     testImplementation(TestDependencies.mockWebServer)
     testImplementation(TestDependencies.truth)
+
+    androidTestImplementation(TestDependencies.junit4)
+    androidTestImplementation(AndroidTestDependencies.testExtJunit)
+    androidTestImplementation(TestDependencies.truth)
+    androidTestImplementation(TestDependencies.coroutinesTest)
+    androidTestImplementation(TestDependencies.archCoreTesting)
+    androidTestImplementation(AndroidTestDependencies.testRunner)
 }
