@@ -7,8 +7,13 @@ import com.arch.starwarssearch.model.Character
 import com.arch.starwarssearch.model.CharacterWithDetails
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class CharacterLocalDataSourceImpl(private val characterDao: CharacterDao): CharacterLocalDataSource {
+@Singleton
+class CharacterLocalDataSourceImpl @Inject constructor(
+    private val characterDao: CharacterDao
+): CharacterLocalDataSource {
     override fun getCharacters(): Flow<List<Character>> = flow{
         val characters = characterDao.getCharacters().map { it.toDomain() }
         emit(characters)

@@ -5,8 +5,11 @@ import com.arch.starwarssearch.model.Character
 import com.arch.starwarssearch.model.CharacterWithDetails
 import com.arch.starwarssearch.repository.CharacterRepository
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class CharacterRepositoryImpl(
+@Singleton
+class CharacterRepositoryImpl @Inject constructor(
     private val characterLocalDataSource: CharacterLocalDataSource
 ): CharacterRepository {
     override fun getCharacters(): Flow<List<Character>> {

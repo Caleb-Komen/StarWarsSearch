@@ -42,6 +42,7 @@ dependencies {
 
     implementation project(path: ':domain')
     implementation project(path: ':data')
+    
     implementation Dependencies.coreKtx
     implementation Dependencies.appcompat
     implementation Dependencies.material
@@ -55,12 +56,15 @@ dependencies {
     implementation Dependencies.okHttpLogging
     implementation Dependencies.liveData
     implementation Dependencies.viewModel
+    implementation Dependencies.roomKtx
     implementation Dependencies.navigationFragment
     implementation Dependencies.navigationUI
+
     testImplementation TestDependencies.junit4
     testImplementation TestDependencies.truth
     testImplementation TestDependencies.coroutinesTest
     testImplementation TestDependencies.archCoreTesting
+
     androidTestImplementation AndroidTestDependencies.testExtJunit
     androidTestImplementation AndroidTestDependencies.espresso
 }
