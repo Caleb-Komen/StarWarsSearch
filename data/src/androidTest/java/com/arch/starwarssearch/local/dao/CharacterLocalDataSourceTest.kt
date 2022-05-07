@@ -5,7 +5,7 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.arch.starwarssearch.local.CharacterLocalDataSource
 import com.arch.starwarssearch.local.StarWarsDatabase
-import com.arch.starwarssearch.local.model.CharacterLocalDataSourceImpl
+import com.arch.starwarssearch.local.CharacterLocalDataSourceImpl
 import com.arch.starwarssearch.model.*
 import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi

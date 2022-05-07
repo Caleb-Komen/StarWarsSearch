@@ -1,6 +1,5 @@
-package com.arch.starwarssearch.local.model
+package com.arch.starwarssearch.local
 
-import com.arch.starwarssearch.local.CharacterLocalDataSource
 import com.arch.starwarssearch.local.dao.CharacterDao
 import com.arch.starwarssearch.local.mapper.toDomain
 import com.arch.starwarssearch.local.mapper.toEntity
