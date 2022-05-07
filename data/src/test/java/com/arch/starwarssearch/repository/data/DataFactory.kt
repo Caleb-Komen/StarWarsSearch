@@ -54,4 +54,21 @@ object DataFactory {
             )
     }
 
+    val char1 = CharacterWithDetails(
+        getCharacter(),
+        getPlanet(),
+        listOf(getFilm()),
+        listOf(getSpecie()),
+        listOf(getStarship()),
+        listOf(getVehicle())
+    )
+    val char2 = CharacterWithDetails(
+        Character("C-3PO", "167", "112BBY", "/api/people/2/"),
+        getPlanet(),
+        listOf(Film("The Empire Strikes Back","Gary Kurtz, Rick McCallum","It is a dark time for the Rebellion.")),
+        listOf(getSpecie()),
+        listOf(getStarship()),
+        listOf(getVehicle())
+    )
+
 }
