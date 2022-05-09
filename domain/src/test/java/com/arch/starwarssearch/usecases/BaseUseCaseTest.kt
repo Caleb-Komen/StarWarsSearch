@@ -9,9 +9,12 @@ open class BaseUseCaseTest {
 
     lateinit var characterDetailsRepository: CharacterDetailsRepository
 
+    lateinit var characterRepository: FakeCharacterRepository
+
     @Before
     open fun setup(){
         characterSearchRepository = FakeCharacterSearchRepository()
         characterDetailsRepository = FakeCharacterDetailsRepository()
+        characterRepository = FakeCharacterRepository()
     }
 }

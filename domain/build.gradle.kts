@@ -14,4 +14,5 @@ dependencies {
 
     testImplementation(TestDependencies.junit4)
     testImplementation(TestDependencies.truth)
+    testImplementation(TestDependencies.coroutinesTest)
 }
