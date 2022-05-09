@@ -37,7 +37,9 @@ class CharacterSearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.characters.observe(viewLifecycleOwner){ result ->
-            filterTypes(result)
+            result?.let {
+                filterTypes(it)
+            }
         }
 
         binding.etSearchField.afterTextChanged {

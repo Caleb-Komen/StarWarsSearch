@@ -4,6 +4,7 @@ import androidx.lifecycle.*
 import com.arch.starwarssearch.mapper.toPresentation
 import com.arch.starwarssearch.model.CharacterPresentation
 import com.arch.starwarssearch.usecases.SearchCharacterUseCase
+import com.arch.starwarssearch.util.AbsentLiveData
 import com.arch.starwarssearch.util.NO_INTERNET
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.UNKNOWN_ERROR
@@ -22,7 +23,11 @@ class CharacterSearchViewModel @Inject constructor(
     private var job: Job? = null
 
     private val _characters = _characterName.switchMap { query ->
-        searchCharacter(query)
+        if(query.isBlank()) {
+            AbsentLiveData.create()
+        } else {
+            searchCharacter(query)
+        }
     }
     val characters: LiveData<Result<List<CharacterPresentation>>> get() = _characters
 
