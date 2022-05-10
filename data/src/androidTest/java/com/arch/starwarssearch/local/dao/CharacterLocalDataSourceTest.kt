@@ -64,6 +64,10 @@ class CharacterLocalDataSourceTest {
 
         val result = characterLocalDataSource.getCharacterByUrl(char.character.url)
 
+        characterLocalDataSource.isCharacterSaved(char.character.url).collect {
+            Truth.assertThat(it).isTrue()
+        }
+
         result.collect {
             Truth.assertThat(it).isNotNull()
             it!!

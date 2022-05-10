@@ -23,6 +23,10 @@ class FakeCharacterRepository: CharacterRepository {
         return flowOf(charactersData[url])
     }
 
+    override fun isCharacterSaved(url: String): Flow<Boolean> {
+        return flowOf(charactersData.containsKey(url))
+    }
+
     override suspend fun insertCharacter(characterWithDetails: CharacterWithDetails) {
         charactersData[characterWithDetails.character.url] = characterWithDetails
     }

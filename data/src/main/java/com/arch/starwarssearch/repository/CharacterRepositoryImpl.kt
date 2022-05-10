@@ -20,6 +20,10 @@ class CharacterRepositoryImpl @Inject constructor(
         return characterLocalDataSource.getCharacterByUrl(url)
     }
 
+    override fun isCharacterSaved(url: String): Flow<Boolean> {
+        return characterLocalDataSource.isCharacterSaved(url)
+    }
+
     override suspend fun insertCharacter(characterWithDetails: CharacterWithDetails) {
         characterLocalDataSource.insertCharacter(characterWithDetails)
     }

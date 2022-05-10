@@ -9,6 +9,8 @@ interface CharacterLocalDataSource {
 
     fun getCharacterByUrl(url: String): Flow<CharacterWithDetails?>
 
+    fun isCharacterSaved(url: String): Flow<Boolean>
+
     suspend fun insertCharacter(characterWithDetails: CharacterWithDetails)
 
     suspend fun deleteCharacterByUrl(url: String)

@@ -24,6 +24,10 @@ class CharacterLocalDataSourceImpl @Inject constructor(
         emit(character)
     }
 
+    override fun isCharacterSaved(url: String): Flow<Boolean> = flow {
+        emit(characterDao.isCharacterSaved(url))
+    }
+
     override suspend fun insertCharacter(characterWithDetails: CharacterWithDetails) {
         characterDao.insertCharacter(characterWithDetails.toEntity())
     }

@@ -70,6 +70,10 @@ class CharacterDaoTest {
         )
         characterDao.insertCharacter(character)
 
+        // check that the characters is in the db
+        Truth.assertThat(characterDao.isCharacterSaved(character.characterLocalEntity.url))
+            .isTrue()
+
         // When we get the character by its url from the database
         val result = characterDao.getCharacterByUrl(character.characterLocalEntity.url)
 

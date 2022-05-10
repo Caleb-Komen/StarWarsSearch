@@ -12,6 +12,9 @@ interface CharacterDao {
     @Query("SELECT * FROM characters WHERE id = :url")
     suspend fun getCharacterByUrl(url: String): CharacterWithDetailsLocalEntity?
 
+    @Query("SELECT EXISTS(SELECT 1 FROM characters WHERE id = :url LIMIT 1)")
+    suspend fun isCharacterSaved(url: String): Boolean
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCharacter(character: CharacterLocalEntity)
 

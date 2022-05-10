@@ -63,9 +63,9 @@ class CharacterRepositoryTest{
         characterLocalDataSource.insertCharacter(char)
 
         // Then the character is available in the local source
-        val result = characterLocalDataSource.getCharacters()
+        val result = characterLocalDataSource.isCharacterSaved(char.character.url)
         result.collect {
-            Truth.assertThat(it).contains(char.character)
+            Truth.assertThat(it).isTrue()
         }
     }
 
