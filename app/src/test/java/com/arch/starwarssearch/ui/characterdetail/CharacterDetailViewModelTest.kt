@@ -1,9 +1,12 @@
 package com.arch.starwarssearch.ui.characterdetail
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.arch.starwarssearch.DataFactory
 import com.arch.starwarssearch.FakeCharacterDetailsRepository
+import com.arch.starwarssearch.FakeCharacterRepository
 import com.arch.starwarssearch.MainCoroutineRule
 import com.arch.starwarssearch.getOrAwaitValue
+import com.arch.starwarssearch.mapper.toPresentation
 import com.arch.starwarssearch.usecases.*
 import com.arch.starwarssearch.util.Result.Success
 import com.google.common.truth.Truth
@@ -19,6 +22,10 @@ class CharacterDetailViewModelTest{
     // subject under test
     private lateinit var characterDetailViewModel: CharacterDetailViewModel
 
+    private lateinit var characterRepository: FakeCharacterRepository
+
+    private val char1 = DataFactory.char1
+
     @get:Rule
     val instantTaskExecutor = InstantTaskExecutorRule()
 
@@ -27,13 +34,28 @@ class CharacterDetailViewModelTest{
 
     @Before
     fun setup(){
+        characterRepository = FakeCharacterRepository()
+        characterRepository.addCharacters(char1)
+
         characterDetailViewModel = CharacterDetailViewModel(
             GetCharacterPlanetUseCase(FakeCharacterDetailsRepository()),
             GetCharacterFilmsUseCase(FakeCharacterDetailsRepository()),
             GetCharacterSpeciesUseCase(FakeCharacterDetailsRepository()),
             GetCharacterStarshipsUseCase(FakeCharacterDetailsRepository()),
-            GetCharacterVehiclesUseCase(FakeCharacterDetailsRepository())
+            GetCharacterVehiclesUseCase(FakeCharacterDetailsRepository()),
+            GetCharacterUseCase(characterRepository),
+            CharacterSavedUseCase(characterRepository)
         )
+    }
+
+    @Test
+    fun getCharacter() = runTest {
+        characterDetailViewModel.setCharacterUrl(char1.character.url)
+
+        val result = characterDetailViewModel.character.getOrAwaitValue()
+        Truth.assertThat(result).isInstanceOf(Success::class.java)
+        result as Success
+        Truth.assertThat(result.data).isEqualTo(char1.toPresentation())
     }
 
     @Test

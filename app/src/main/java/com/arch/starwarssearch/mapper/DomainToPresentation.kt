@@ -25,3 +25,14 @@ fun StarShip.toPresentation(): StarshipPresentation{
 fun Vehicle.toPresentation(): VehiclePresentation {
     return VehiclePresentation(name, model, manufacturer, passengers)
 }
+
+fun CharacterWithDetails.toPresentation(): CharacterWithDetailsPresentation{
+    return CharacterWithDetailsPresentation(
+        character.toPresentation(),
+        planet.toPresentation(),
+        films.map { it.toPresentation() },
+        species.map { it.toPresentation() },
+        starships.map { it.toPresentation() },
+        vehicles.map { it.toPresentation() }
+    )
+}

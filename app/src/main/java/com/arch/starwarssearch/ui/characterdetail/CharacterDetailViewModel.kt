@@ -19,7 +19,9 @@ class CharacterDetailViewModel @Inject constructor(
     private val getCharacterFilmsUseCase: GetCharacterFilmsUseCase,
     private val getCharacterSpeciesUseCase: GetCharacterSpeciesUseCase,
     private val getCharacterStarshipsUseCase: GetCharacterStarshipsUseCase,
-    private val getCharacterVehiclesUseCase: GetCharacterVehiclesUseCase
+    private val getCharacterVehiclesUseCase: GetCharacterVehiclesUseCase,
+    private val getCharacterUseCase: GetCharacterUseCase,
+    private val characterSavedUseCase: CharacterSavedUseCase
 ): ViewModel() {
     private val characterUrl = MutableLiveData<String>()
 
@@ -38,8 +40,40 @@ class CharacterDetailViewModel @Inject constructor(
     private val _vehicles = characterUrl.switchMap { getCharacterVehicles(it) }
     val vehicles: LiveData<Result<List<VehiclePresentation>>> get() = _vehicles
 
+    val isCharacterSaved = MutableLiveData(false)
+
+    private val loadCharacter = MutableLiveData<String>()
+
+    private val _character = loadCharacter.switchMap { getCharacter(it) }
+    val character: LiveData<Result<CharacterWithDetailsPresentation>> get() = _character
+
     fun setCharacterUrl(url: String){
-        characterUrl.value = url
+        var characterSaved = false
+        viewModelScope.launch {
+            characterSavedUseCase(url).collect {
+                characterSaved = it
+            }
+            if (characterSaved){
+                isCharacterSaved.value = true
+                loadCharacter.value = url
+            } else {
+                characterUrl.value = url
+            }
+        }
+    }
+
+    private fun getCharacter(url: String): LiveData<Result<CharacterWithDetailsPresentation>>{
+        val result = MutableLiveData<Result<CharacterWithDetailsPresentation>>()
+        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+            result.value = Result.Error(throwable.message)
+        }
+        result.value = Result.Loading
+        viewModelScope.launch(coroutineExceptionHandler) {
+            getCharacterUseCase(url).collect {
+                result.value = Result.Success(it?.toPresentation())
+            }
+        }
+        return result
     }
 
     private fun getCharacterPlanet(url: String):LiveData<Result<PlanetPresentation>> {

@@ -20,11 +20,7 @@ object DataFactory {
         return Film(
             "A New Hope",
             "Gary Kurtz, Rick McCallum",
-            "It is a period of civil war.\n\nRebel spaceships, striking\n\nfrom a hidden base, have won\n\ntheir first victory against" +
-                    "\n\nthe evil Galactic Empire.\n\n\n\nDuring the battle, Rebel\n\nspies managed to steal secret\r\nplans to the Empire's" +
-                    "\n\nultimate weapon, the DEATH\n\nSTAR, an armored space\n\nstation with enough power\n\nto destroy an entire planet." +
-                    "\n\n\n\nPursued by the Empire's\n\nsinister agents, Princess\n\nLeia races home aboard her\n\nstarship, custodian of the" +
-                    "\n\nstolen plans that can save her\n\npeople and restore\n\nfreedom to the galaxy...."
+            "It is a period of civil war..."
         )
     }
 
@@ -49,4 +45,21 @@ object DataFactory {
             "0"
         )
     }
+
+    val char1 = CharacterWithDetails(
+        getCharacter(),
+        getPlanet(),
+        listOf(getFilm()),
+        listOf(getSpecie()),
+        listOf(getStarship()),
+        listOf(getVehicle())
+    )
+    val char2 = CharacterWithDetails(
+        Character("C-3PO", "167", "112BBY", "/api/people/2/"),
+        getPlanet(),
+        listOf(Film("The Empire Strikes Back","Gary Kurtz, Rick McCallum","It is a dark time for the Rebellion.")),
+        listOf(getSpecie()),
+        listOf(getStarship()),
+        listOf(getVehicle())
+    )
 }
