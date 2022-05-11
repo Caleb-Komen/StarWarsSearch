@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.starwarssearch.databinding.ListItemCharacterBinding
 import com.arch.starwarssearch.model.CharacterPresentation
+import com.arch.starwarssearch.ui.StarWarsFragmentDirections
 
 class CharactersAdapter: ListAdapter<CharacterPresentation, CharactersAdapter.CharactersViewHolder>(DIFF_UTIL) {
 
@@ -31,8 +32,8 @@ class CharactersAdapter: ListAdapter<CharacterPresentation, CharactersAdapter.Ch
     ): RecyclerView.ViewHolder(binding.root){
         init {
             binding.setClickListener { view ->
-                val action = CharacterSearchFragmentDirections
-                    .actionCharacterSearchFragmentToCharacterDetailFragment(getItem(adapterPosition))
+                val action = StarWarsFragmentDirections
+                    .actionStarWarsFragmentToCharacterDetailFragment(getItem(adapterPosition))
                 view.findNavController().navigate(action)
             }
         }

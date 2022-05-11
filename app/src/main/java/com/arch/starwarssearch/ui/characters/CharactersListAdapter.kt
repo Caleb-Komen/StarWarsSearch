@@ -2,11 +2,13 @@ package com.arch.starwarssearch.ui.characters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.arch.starwarssearch.databinding.CharacterItemBinding
 import com.arch.starwarssearch.model.CharacterPresentation
+import com.arch.starwarssearch.ui.StarWarsFragmentDirections
 
 class CharactersListAdapter: ListAdapter<CharacterPresentation, CharactersListAdapter.CharactersViewHolder>(DIFF_UTIL) {
 
@@ -25,9 +27,16 @@ class CharactersListAdapter: ListAdapter<CharacterPresentation, CharactersListAd
         holder.bind(character)
     }
 
-    class CharactersViewHolder(
+    inner class CharactersViewHolder(
         private val binding: CharacterItemBinding
     ): RecyclerView.ViewHolder(binding.root){
+        init {
+            binding.setClickListener { view ->
+                val action = StarWarsFragmentDirections
+                    .actionStarWarsFragmentToCharacterDetailFragment(getItem(adapterPosition))
+                view.findNavController().navigate(action)
+            }
+        }
 
         fun bind(item: CharacterPresentation){
             binding.apply {

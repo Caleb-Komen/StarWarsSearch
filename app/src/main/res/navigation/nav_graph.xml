@@ -6,15 +6,6 @@
     app:startDestination="@id/starWarsFragment">
 
     <fragment
-        android:id="@+id/characterSearchFragment"
-        android:name="com.arch.starwarssearch.ui.charactersearch.CharacterSearchFragment"
-        android:label="@string/app_name"
-        tools:layout="@layout/fragment_character_search" >
-        <action
-            android:id="@+id/action_characterSearchFragment_to_characterDetailFragment"
-            app:destination="@id/characterDetailFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/characterDetailFragment"
         android:name="com.arch.starwarssearch.ui.characterdetail.CharacterDetailFragment"
         android:label="@string/app_name"
