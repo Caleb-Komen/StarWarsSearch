@@ -20,4 +20,6 @@
     <string name="retry">Retry</string>
     <string name="empty_result">No result.</string>
     <string name="no_characters">No Available characters.</string>
+    <string name="characters">Characters</string>
+    <string name="search">Search</string>
 </resources>

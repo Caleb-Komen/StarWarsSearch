@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/characterSearchFragment">
+    app:startDestination="@id/starWarsFragment">
 
     <fragment
         android:id="@+id/characterSearchFragment"
@@ -22,5 +22,14 @@
         <argument
             android:name="character"
             app:argType="com.arch.starwarssearch.model.CharacterPresentation" />
+    </fragment>
+    <fragment
+        android:id="@+id/starWarsFragment"
+        android:name="com.arch.starwarssearch.ui.StarWarsFragment"
+        android:label="StarWarsFragment"
+        tools:layout="@layout/fragment_star_wars" >
+        <action
+            android:id="@+id/action_starWarsFragment_to_characterDetailFragment"
+            app:destination="@id/characterDetailFragment" />
     </fragment>
 </navigation>
