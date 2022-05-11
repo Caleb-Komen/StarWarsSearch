@@ -8,6 +8,7 @@ import com.arch.starwarssearch.MainCoroutineRule
 import com.arch.starwarssearch.getOrAwaitValue
 import com.arch.starwarssearch.mapper.toPresentation
 import com.arch.starwarssearch.usecases.*
+import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.Result.Success
 import com.google.common.truth.Truth
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -44,7 +45,8 @@ class CharacterDetailViewModelTest{
             GetCharacterStarshipsUseCase(FakeCharacterDetailsRepository()),
             GetCharacterVehiclesUseCase(FakeCharacterDetailsRepository()),
             GetCharacterUseCase(characterRepository),
-            CharacterSavedUseCase(characterRepository)
+            CharacterSavedUseCase(characterRepository),
+            DeleteCharacterUseCase(characterRepository)
         )
     }
 
@@ -101,5 +103,13 @@ class CharacterDetailViewModelTest{
         val result = characterDetailViewModel.vehicles.getOrAwaitValue()
         Truth.assertThat(result).isInstanceOf(Success::class.java)
         Truth.assertThat((result as Success).data).isNotEmpty()
+    }
+
+    @Test
+    fun deleteCharacter() = runTest {
+        characterDetailViewModel.deleteCharacter(char1.character.url)
+
+        val result = characterRepository.charactersData[char1.character.url]
+        Truth.assertThat(result).isNull()
     }
 }

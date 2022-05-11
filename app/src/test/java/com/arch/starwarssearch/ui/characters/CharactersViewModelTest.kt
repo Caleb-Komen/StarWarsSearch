@@ -6,6 +6,7 @@ import com.arch.starwarssearch.FakeCharacterRepository
 import com.arch.starwarssearch.MainCoroutineRule
 import com.arch.starwarssearch.getOrAwaitValue
 import com.arch.starwarssearch.mapper.toPresentation
+import com.arch.starwarssearch.usecases.DeleteAllCharactersUseCase
 import com.arch.starwarssearch.usecases.GetAllCharactersUseCase
 import com.arch.starwarssearch.util.Result.Success
 import com.google.common.truth.Truth
@@ -34,7 +35,8 @@ class CharactersViewModelTest{
         characterRepository = FakeCharacterRepository()
         characterRepository.addCharacters(char1, char2)
         charactersViewModel = CharactersViewModel(
-            GetAllCharactersUseCase(characterRepository)
+            GetAllCharactersUseCase(characterRepository),
+            DeleteAllCharactersUseCase(characterRepository)
         )
     }
 
@@ -45,5 +47,12 @@ class CharactersViewModelTest{
         Truth.assertThat(results.data?.isNotEmpty()).isTrue()
         Truth.assertThat(results.data).contains(char1.character.toPresentation())
         Truth.assertThat(results.data).contains(char2.character.toPresentation())
+    }
+
+    @Test
+    fun deleteAllCharacters(){
+        charactersViewModel.deleteAllCharacters()
+
+        Truth.assertThat(characterRepository.charactersData.values).isEmpty()
     }
 }

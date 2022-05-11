@@ -21,7 +21,8 @@ class CharacterDetailViewModel @Inject constructor(
     private val getCharacterStarshipsUseCase: GetCharacterStarshipsUseCase,
     private val getCharacterVehiclesUseCase: GetCharacterVehiclesUseCase,
     private val getCharacterUseCase: GetCharacterUseCase,
-    private val characterSavedUseCase: CharacterSavedUseCase
+    private val characterSavedUseCase: CharacterSavedUseCase,
+    private val deleteCharacterUseCase: DeleteCharacterUseCase
 ): ViewModel() {
     private val characterUrl = MutableLiveData<String>()
 
@@ -159,5 +160,11 @@ class CharacterDetailViewModel @Inject constructor(
             }
         }
         return result
+    }
+
+    fun deleteCharacter(url: String){
+        viewModelScope.launch {
+            deleteCharacterUseCase(url)
+        }
     }
 }
