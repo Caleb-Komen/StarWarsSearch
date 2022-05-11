@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="com.arch.starwarssearch.model.CharacterPresentation" />
+
+        <import type="java.util.List" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="characters"
+            type="List&lt;CharacterPresentation>" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp"
+        tools:context=".ui.characters.CharactersFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_characters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:items="@{characters}"
+            android:visibility="@{characters.empty ? View.GONE : View.VISIBLE}"
+            tools:listitem="@layout/character_item" />
+
+        <LinearLayout
+            android:id="@+id/layout_no_characters"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="@{characters.empty ? View.VISIBLE : View.GONE}">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/rounded_grey_background"
+                    app:tint="@android:color/darker_gray" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="140dp"
+                        android:layout_height="12dp"
+                        android:background="@android:color/darker_gray" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="12dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@android:color/darker_gray" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/no_characters"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

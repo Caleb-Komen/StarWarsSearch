@@ -19,4 +19,5 @@
     <string name="producer_text">Producer(s): %s</string>
     <string name="retry">Retry</string>
     <string name="empty_result">No result.</string>
+    <string name="no_characters">No Available characters.</string>
 </resources>

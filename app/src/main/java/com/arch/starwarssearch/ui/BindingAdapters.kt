@@ -9,13 +9,16 @@ import com.arch.starwarssearch.ui.characterdetail.FilmsAdapter
 import com.arch.starwarssearch.ui.characterdetail.SpeciesAdapter
 import com.arch.starwarssearch.ui.characterdetail.StarshipsAdapter
 import com.arch.starwarssearch.ui.characterdetail.VehiclesAdapter
+import com.arch.starwarssearch.ui.characters.CharactersListAdapter
 import com.arch.starwarssearch.ui.charactersearch.CharactersAdapter
 
 @BindingAdapter("items")
 fun setCharacters(view: RecyclerView, items: List<CharacterPresentation>?){
     items?.let {
-        val adapter = view.adapter as CharactersAdapter
-        adapter.submitList(items)
+        when (val adapter = view.adapter){
+            is CharactersAdapter -> adapter.submitList(items)
+            is CharactersListAdapter -> adapter.submitList(items)
+        }
     }
 }
 

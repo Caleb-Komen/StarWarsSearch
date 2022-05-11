@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="character"
+            type="com.arch.starwarssearch.model.CharacterPresentation" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:onClick="@{clickListener}">
+
+        <TextView
+            android:id="@+id/tv_name_initials"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/rounded_grey_background"
+            android:fontFamily="@font/grape_nuts_regular"
+            android:gravity="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textStyle="bold"
+            tools:text="LS" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_character_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{character.name}"
+                android:fontFamily="sans-serif-medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                tools:text="Luke Skywalker" />
+
+            <TextView
+                android:id="@+id/tv_birth_year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{character.birthYear}"
+                tools:text="19 BBY" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>
