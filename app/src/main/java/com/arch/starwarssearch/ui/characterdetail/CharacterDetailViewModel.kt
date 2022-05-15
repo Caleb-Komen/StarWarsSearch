@@ -1,11 +1,13 @@
 package com.arch.starwarssearch.ui.characterdetail
 
 import androidx.lifecycle.*
+import com.arch.starwarssearch.mapper.toDomain
 import com.arch.starwarssearch.mapper.toPresentation
 import com.arch.starwarssearch.model.*
 import com.arch.starwarssearch.usecases.*
 import com.arch.starwarssearch.util.NO_INTERNET
 import com.arch.starwarssearch.util.Result
+import com.arch.starwarssearch.util.Result.Success
 import com.arch.starwarssearch.util.UNKNOWN_ERROR
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -21,6 +23,7 @@ class CharacterDetailViewModel @Inject constructor(
     private val getCharacterStarshipsUseCase: GetCharacterStarshipsUseCase,
     private val getCharacterVehiclesUseCase: GetCharacterVehiclesUseCase,
     private val getCharacterUseCase: GetCharacterUseCase,
+    private val saveCharacterUseCase: SaveCharacterUseCase,
     private val characterSavedUseCase: CharacterSavedUseCase,
     private val deleteCharacterUseCase: DeleteCharacterUseCase
 ): ViewModel() {
@@ -63,6 +66,20 @@ class CharacterDetailViewModel @Inject constructor(
         }
     }
 
+    fun saveCharacter(char: CharacterPresentation){
+        val character = CharacterWithDetailsPresentation(
+            character = char,
+            planet = (_planet.value as Success).data!!,
+            films = (_films.value as Success).data!!,
+            species = (_species.value as Success).data!!,
+            starships = (_starships.value as Success).data!!,
+            vehicles = (_vehicles.value as Success).data!!
+        )
+        viewModelScope.launch {
+            saveCharacterUseCase(character.toDomain())
+        }
+    }
+
     private fun getCharacter(url: String): LiveData<Result<CharacterWithDetailsPresentation>>{
         val result = MutableLiveData<Result<CharacterWithDetailsPresentation>>()
         val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
@@ -71,7 +88,7 @@ class CharacterDetailViewModel @Inject constructor(
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterUseCase(url).collect {
-                result.value = Result.Success(it?.toPresentation())
+                result.value = Success(it?.toPresentation())
             }
         }
         return result
@@ -88,7 +105,7 @@ class CharacterDetailViewModel @Inject constructor(
         viewModelScope.launch(coroutineExceptionHandler) {
             result.value = Result.Loading
             getCharacterPlanetUseCase(url).collect{ planet ->
-                result.value = Result.Success(planet.toPresentation())
+                result.value = Success(planet.toPresentation())
             }
         }
         return result
@@ -105,7 +122,7 @@ class CharacterDetailViewModel @Inject constructor(
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterFilmsUseCase(url).collect{ films ->
-                result.value = Result.Success(films.map { it.toPresentation() })
+                result.value = Success(films.map { it.toPresentation() })
             }
         }
         return result
@@ -122,7 +139,7 @@ class CharacterDetailViewModel @Inject constructor(
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterSpeciesUseCase(url).collect{ species ->
-                result.value = Result.Success(species.map { it.toPresentation() })
+                result.value = Success(species.map { it.toPresentation() })
             }
         }
         return result
@@ -139,7 +156,7 @@ class CharacterDetailViewModel @Inject constructor(
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterStarshipsUseCase(url).collect{ starships ->
-                result.value = Result.Success(starships.map { it.toPresentation() })
+                result.value = Success(starships.map { it.toPresentation() })
             }
         }
         return result
@@ -156,7 +173,7 @@ class CharacterDetailViewModel @Inject constructor(
         result.value = Result.Loading
         viewModelScope.launch(coroutineExceptionHandler) {
             getCharacterVehiclesUseCase(url).collect{ vehicles ->
-                result.value = Result.Success(vehicles.map { it.toPresentation() })
+                result.value = Success(vehicles.map { it.toPresentation() })
             }
         }
         return result

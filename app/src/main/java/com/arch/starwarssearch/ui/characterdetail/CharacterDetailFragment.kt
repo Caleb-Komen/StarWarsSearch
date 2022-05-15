@@ -100,7 +100,7 @@ class CharacterDetailFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId){
             R.id.action_save -> {
-                viewModel.setCharacterUrl(args.character.url)
+                viewModel.saveCharacter(args.character)
                 return true
             }
             R.id.action_delete -> {
