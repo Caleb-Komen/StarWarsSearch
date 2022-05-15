@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/layout/list_item_specie.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/list_item_starship.xml" value="0.35625" />
         <entry key="app/src/main/res/layout/list_item_vehicle.xml" value="0.35625" />
+        <entry key="app/src/main/res/menu/menu_character_details.xml" value="0.35625" />
       </map>
     </option>
   </component>

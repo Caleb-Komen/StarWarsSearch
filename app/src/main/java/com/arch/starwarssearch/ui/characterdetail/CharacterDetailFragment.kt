@@ -1,11 +1,11 @@
 package com.arch.starwarssearch.ui.characterdetail
 
 import android.os.Bundle
+import android.view.*
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.arch.starwarssearch.R
 import com.arch.starwarssearch.databinding.FragmentCharacterDetailBinding
@@ -31,6 +31,7 @@ class CharacterDetailFragment : Fragment() {
         _binding = FragmentCharacterDetailBinding.inflate(inflater, container, false).apply {
             character = args.character
         }
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         binding.tvNameInitials.text = extractCharacterNameInitials(args.character.name)
         val tabLayout = binding.tabLayout
         val viewPager = binding.viewPager
@@ -38,6 +39,7 @@ class CharacterDetailFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = getTabTitle(position)
         }.attach()
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -89,6 +91,31 @@ class CharacterDetailFragment : Fragment() {
             initials.append(name[0])
         }
         return initials.toString().uppercase()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_character_details, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId){
+            R.id.action_save -> {
+                viewModel.setCharacterUrl(args.character.url)
+                return true
+            }
+            R.id.action_delete -> {
+                viewModel.deleteCharacter(args.character.url)
+                navigateBack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun navigateBack(){
+        val action =
+            CharacterDetailFragmentDirections.actionCharacterDetailFragmentToStarWarsFragment()
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {

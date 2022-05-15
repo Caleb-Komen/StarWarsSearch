@@ -22,4 +22,6 @@
     <string name="no_characters">No Available characters.</string>
     <string name="characters">Characters</string>
     <string name="search">Search</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
 </resources>

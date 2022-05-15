@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import com.arch.starwarssearch.R
 import com.arch.starwarssearch.databinding.FragmentStarWarsBinding
 import com.arch.starwarssearch.databinding.FragmentStarshipsBinding
@@ -27,6 +28,7 @@ class StarWarsFragment : Fragment() {
             val title = getTabTitle(position)
             tab.text = title
         }.attach()
+        (requireActivity() as AppCompatActivity).setSupportActionBar(binding.toolbar)
         return binding.root
     }
 
