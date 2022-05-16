@@ -24,6 +24,8 @@ class CharacterDetailFragment : Fragment() {
 
     private val args: CharacterDetailFragmentArgs by navArgs()
 
+    private var isCharacterSaved = false
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -59,6 +61,11 @@ class CharacterDetailFragment : Fragment() {
             val result = it ?: return@observe
             val planet = getPlanet(result)
             binding.planet = planet
+        }
+
+        viewModel.isCharacterSaved.observe(viewLifecycleOwner){
+            isCharacterSaved = it
+            requireActivity().invalidateOptionsMenu()
         }
     }
 
@@ -127,6 +134,20 @@ class CharacterDetailFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        val save = menu.findItem(R.id.action_save)
+        val delete = menu.findItem(R.id.action_delete)
+
+        if(isCharacterSaved){
+            save.isVisible = false
+            delete.isVisible = true
+        } else{
+            save.isVisible = true
+            delete.isVisible = false
+        }
     }
 
     private fun navigateBack(){

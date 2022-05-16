@@ -52,16 +52,15 @@ class CharacterDetailViewModel @Inject constructor(
     val character: LiveData<Result<CharacterWithDetailsPresentation>> get() = _character
 
     fun setCharacterUrl(url: String){
-        var characterSaved = false
+        var characterSaved: Boolean
         viewModelScope.launch {
-            characterSavedUseCase(url).collect {
-                characterSaved = it
-            }
+            characterSaved = isCharacterInLocalDb(url)
             if (characterSaved){
                 isCharacterSaved.value = true
                 loadCharacter.value = url
             } else {
                 characterUrl.value = url
+                isCharacterSaved.value = false
             }
         }
     }
@@ -77,7 +76,17 @@ class CharacterDetailViewModel @Inject constructor(
         )
         viewModelScope.launch {
             saveCharacterUseCase(character.toDomain())
+            // update the LiveData once a character is saved to help redraw the action bar menu
+            isCharacterSaved.value = isCharacterInLocalDb(char.url)
         }
+    }
+
+    private suspend fun isCharacterInLocalDb(url: String): Boolean{
+        var isSaved = false
+        characterSavedUseCase(url).collect {
+            isSaved = it
+        }
+        return isSaved
     }
 
     private fun getCharacter(url: String): LiveData<Result<CharacterWithDetailsPresentation>>{
