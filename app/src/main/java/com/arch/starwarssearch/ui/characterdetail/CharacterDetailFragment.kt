@@ -10,6 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.arch.starwarssearch.R
 import com.arch.starwarssearch.databinding.FragmentCharacterDetailBinding
 import com.arch.starwarssearch.model.*
+import com.arch.starwarssearch.ui.extractCharacterNameInitials
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.Result.*
 import com.google.android.material.tabs.TabLayoutMediator
@@ -106,15 +107,6 @@ class CharacterDetailFragment : Fragment() {
             VEHICLES_PAGE_INDEX -> getString(R.string.vehicles)
             else -> null
         }
-    }
-
-    private fun extractCharacterNameInitials(characterName: String): String{
-        val nameList = characterName.split(" ")
-        val initials = StringBuilder()
-        for (name in nameList){
-            initials.append(name[0])
-        }
-        return initials.toString().uppercase()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

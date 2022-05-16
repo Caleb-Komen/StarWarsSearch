@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arch.starwarssearch.databinding.CharacterItemBinding
 import com.arch.starwarssearch.model.CharacterPresentation
 import com.arch.starwarssearch.ui.StarWarsFragmentDirections
+import com.arch.starwarssearch.ui.extractCharacterNameInitials
 
 class CharactersListAdapter: ListAdapter<CharacterPresentation, CharactersListAdapter.CharactersViewHolder>(DIFF_UTIL) {
 
@@ -41,6 +42,7 @@ class CharactersListAdapter: ListAdapter<CharacterPresentation, CharactersListAd
         fun bind(item: CharacterPresentation){
             binding.apply {
                 character = item
+                tvNameInitials.text = extractCharacterNameInitials(item.name)
                 executePendingBindings()
             }
         }

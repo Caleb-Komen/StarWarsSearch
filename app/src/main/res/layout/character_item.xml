@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:onClick="@{clickListener}">
+        android:onClick="@{clickListener}"
+        android:layout_marginTop="8dp">
 
         <TextView
             android:id="@+id/tv_name_initials"
