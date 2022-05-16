@@ -54,6 +54,23 @@ class CharacterDetailFragment : Fragment() {
             val result = it ?: return@observe
             bindPlanet(result)
         }
+
+        viewModel.character.observe(viewLifecycleOwner){
+            val result = it ?: return@observe
+            val planet = getPlanet(result)
+            binding.planet = planet
+        }
+    }
+
+    private fun getPlanet(result: Result<CharacterWithDetailsPresentation>): PlanetPresentation? {
+        when (result) {
+            is Success -> return result.data?.planet!!
+            is Error -> return null
+            Loading -> {
+                // no op
+            }
+        }
+        return null
     }
 
     private fun bindPlanet(result: Result<PlanetPresentation>) {

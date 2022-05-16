@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.arch.starwarssearch.R
 import com.arch.starwarssearch.databinding.FragmentFilmsBinding
+import com.arch.starwarssearch.model.CharacterWithDetailsPresentation
 import com.arch.starwarssearch.model.FilmPresentation
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.Result.*
@@ -36,6 +37,22 @@ class FilmsFragment : Fragment() {
             val result = it ?: return@observe
             bindFilms(result)
         }
+        viewModel.character.observe(viewLifecycleOwner){
+            val result = it ?: return@observe
+            val films = getFilms(result)
+            binding.films = films
+        }
+    }
+
+    private fun getFilms(result: Result<CharacterWithDetailsPresentation>): List<FilmPresentation>? {
+        when (result){
+            is Success -> return result.data?.films!!
+            is Error -> return null
+            Loading -> {
+                // no op
+            }
+        }
+        return null;
     }
 
     private fun bindFilms(result: Result<List<FilmPresentation>>) {

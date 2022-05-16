@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.arch.starwarssearch.R
 import com.arch.starwarssearch.databinding.FragmentStarshipsBinding
+import com.arch.starwarssearch.model.CharacterWithDetailsPresentation
 import com.arch.starwarssearch.model.StarshipPresentation
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.Result.*
@@ -35,8 +36,23 @@ class StarshipsFragment : Fragment() {
         viewModel.starships.observe(viewLifecycleOwner){
             val result = it ?: return@observe
             bindStarships(result)
-
         }
+        viewModel.character.observe(viewLifecycleOwner){
+            val result = it ?: return@observe
+            val starships = getStarships(result)
+            binding.starships = starships
+        }
+    }
+
+    private fun getStarships(result: Result<CharacterWithDetailsPresentation>): List<StarshipPresentation>? {
+        when (result){
+            is Success -> return result.data?.starships!!
+            is Error -> return null
+            Loading -> {
+                // no op
+            }
+        }
+        return null
     }
 
     private fun bindStarships(result: Result<List<StarshipPresentation>>) {

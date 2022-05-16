@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.arch.starwarssearch.databinding.FragmentVehiclesBinding
+import com.arch.starwarssearch.model.CharacterWithDetailsPresentation
 import com.arch.starwarssearch.model.VehiclePresentation
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.Result.*
@@ -35,6 +36,22 @@ class VehiclesFragment : Fragment() {
             val result = it ?: return@observe
             bindVehicles(result)
         }
+        viewModel.character.observe(viewLifecycleOwner){
+            val result = it ?: return@observe
+            val vehicles = getVehicles(result)
+            binding.vehicles = vehicles
+        }
+    }
+
+    private fun getVehicles(result: Result<CharacterWithDetailsPresentation>): List<VehiclePresentation>? {
+        when (result){
+            is Success -> return result.data?.vehicles!!
+            is Error -> return null
+            Loading -> {
+                // no op
+            }
+        }
+        return null
     }
 
     private fun bindVehicles(result: Result<List<VehiclePresentation>>) {

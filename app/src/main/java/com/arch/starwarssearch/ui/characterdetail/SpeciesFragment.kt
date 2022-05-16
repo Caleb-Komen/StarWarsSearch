@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import com.arch.starwarssearch.R
 import com.arch.starwarssearch.databinding.FragmentSpeciesBinding
+import com.arch.starwarssearch.model.CharacterWithDetailsPresentation
 import com.arch.starwarssearch.model.SpeciePresentation
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.Result.*
@@ -36,6 +37,22 @@ class SpeciesFragment : Fragment() {
             val result = it ?: return@observe
             bindSpecies(result)
         }
+        viewModel.character.observe(viewLifecycleOwner){
+            val result = it ?: return@observe
+            val species = getSpecies(result)
+            binding.species = species
+        }
+    }
+
+    private fun getSpecies(result: Result<CharacterWithDetailsPresentation>): List<SpeciePresentation>? {
+        when (result){
+            is Success -> return result.data?.species
+            is Error -> return null
+            Loading -> {
+                // no op
+            }
+        }
+        return null
     }
 
     private fun bindSpecies(result: Result<List<SpeciePresentation>>) {
