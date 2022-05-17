@@ -4,6 +4,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/coordinator_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.StarWarsFragment">
@@ -14,34 +15,28 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:id="@+id/toolbar" />
+                app:layout_scrollFlags="scroll|enterAlways" />
+
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
-                style="@style/CustomTabLayout"
+                style="@style/Widget.MaterialComponents.TabLayout.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                app:tabGravity="center">
+                app:tabIndicatorColor="@color/red_500"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="4dp"
+                app:tabRippleColor="@null"
+                app:tabSelectedTextColor="@color/red_500" />
 
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_films"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/characters" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_species"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/search" />
-
-            </com.google.android.material.tabs.TabLayout>
         </com.google.android.material.appbar.AppBarLayout>
+
         <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/view_pager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

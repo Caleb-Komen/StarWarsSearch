@@ -28,13 +28,15 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:id="@+id/toolbar" />
+                android:id="@+id/toolbar"
+                app:layout_scrollFlags="scroll|enterAlways" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:padding="8dp"
+                app:layout_scrollFlags="scroll|enterAlways">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -248,32 +250,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                style="@style/CustomTabLayout">
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_films"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/films" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_species"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/species" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_starships"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/starships" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:id="@+id/tab_vehicles"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/vehicles" />
-            </com.google.android.material.tabs.TabLayout>
+                style="@style/CustomTabLayout" />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.viewpager2.widget.ViewPager2

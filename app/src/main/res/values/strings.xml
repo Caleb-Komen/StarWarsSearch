@@ -24,4 +24,9 @@
     <string name="search">Search</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
+    <string name="save_character_message">Character Saved</string>
+    <string name="delete_character_message">Character deleted</string>
+    <string name="delete_confirmation_message">Operation cannot be undone. Continue?</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

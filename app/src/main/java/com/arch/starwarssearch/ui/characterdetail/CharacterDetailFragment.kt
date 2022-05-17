@@ -1,7 +1,10 @@
 package com.arch.starwarssearch.ui.characterdetail
 
+import android.content.DialogInterface
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -13,6 +16,7 @@ import com.arch.starwarssearch.model.*
 import com.arch.starwarssearch.ui.extractCharacterNameInitials
 import com.arch.starwarssearch.util.Result
 import com.arch.starwarssearch.util.Result.*
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -117,11 +121,11 @@ class CharacterDetailFragment : Fragment() {
         when (item.itemId){
             R.id.action_save -> {
                 viewModel.saveCharacter(args.character)
+                showSnackbar(getString(R.string.save_character_message))
                 return true
             }
             R.id.action_delete -> {
-                viewModel.deleteCharacter(args.character.url)
-                navigateBack()
+                showDeleteDialog()
                 return true
             }
         }
@@ -142,10 +146,32 @@ class CharacterDetailFragment : Fragment() {
         }
     }
 
+    private fun showDeleteDialog(){
+        val dialog = AlertDialog.Builder(requireContext()).apply {
+            setTitle(R.string.delete)
+            setMessage(R.string.delete_confirmation_message)
+            setPositiveButton(R.string.ok){ _, _ ->
+                viewModel.deleteCharacter(args.character.url)
+                navigateBack()
+            }
+            setNegativeButton(R.string.cancel){ dialog, _ ->
+                dialog.dismiss()
+            }
+            setCancelable(true)
+        }.create()
+        dialog.show()
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.BLACK)
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.BLACK)
+    }
+
     private fun navigateBack(){
         val action =
             CharacterDetailFragmentDirections.actionCharacterDetailFragmentToStarWarsFragment()
         findNavController().navigate(action)
+    }
+
+    private fun showSnackbar(message: String){
+        Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT).show()
     }
 
     override fun onDestroyView() {
