@@ -12,7 +12,7 @@ This contains all things related to the UI layer along with any other classes th
 
 ### data
 This module contains a networking layer and a database layer. The networking layer handles data interaction with the network and provides data to the presentation layer.
-The database is responsible for persisting data locally and serve the data to the presentation layer(This is still under development :hammer_and_pick:)
+The database is responsible for persisting data locally and serve the data to the presentation layer.
 
 ### domain
 The domain module defines the models core to the app, interactors(usecases) and repositories contract.
@@ -28,9 +28,9 @@ The domain module defines the models core to the app, interactors(usecases) and 
 - [Retrofit](https://square.github.io/retrofit/) - a type-safe HTTP client.
 - [okhttp-logging-interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor) - logs HTTP request and response data.
 - [Gson](https://github.com/google/gson) - used to convert Java Objects into their JSON representation and vice versa.
+- [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - for dependency injection.
 - [Truth](https://github.com/google/truth) - assertion library that makes test assertions and failure messages more readable.
 - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) - web server fot testing HTTP clients. Makes it easy to test that your app does the right thing when it makes HTTP and HTTPS calls.
 
-Some features are still under development :hammer_and_pick:
-
-<img src="art/Screenshot_1.png" width=200> <img src="art/Screenshot_2.png" width=200> <img src="art/Screenshot_3.png" width=200>
+<img src="art/Screenshot_1.png" width=300> <img src="art/Screenshot_2.png" width=300> <img src="art/Screenshot_3.png" width=300> <img src="art/Screenshot_4.png" width=300>
+<img src="art/Screenshot_5.png" width=300>
