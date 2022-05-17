@@ -26,6 +26,7 @@ class CharacterDetailViewModelTest{
     private lateinit var characterRepository: FakeCharacterRepository
 
     private val char1 = DataFactory.char1
+    private val char2 = DataFactory.char2
 
     @get:Rule
     val instantTaskExecutor = InstantTaskExecutorRule()
@@ -45,9 +46,27 @@ class CharacterDetailViewModelTest{
             GetCharacterStarshipsUseCase(FakeCharacterDetailsRepository()),
             GetCharacterVehiclesUseCase(FakeCharacterDetailsRepository()),
             GetCharacterUseCase(characterRepository),
+            SaveCharacterUseCase(characterRepository),
             CharacterSavedUseCase(characterRepository),
             DeleteCharacterUseCase(characterRepository)
         )
+    }
+
+    @Test
+    fun saveCharacter() = runTest {
+        characterDetailViewModel.setCharacterUrl(char2.character.url)
+
+        // wait for the livedata to be set
+        characterDetailViewModel.planet.getOrAwaitValue()
+        characterDetailViewModel.species.getOrAwaitValue()
+        characterDetailViewModel.films.getOrAwaitValue()
+        characterDetailViewModel.starships.getOrAwaitValue()
+        characterDetailViewModel.vehicles.getOrAwaitValue()
+
+        characterDetailViewModel.saveCharacter(char2.character.toPresentation())
+
+        val result = characterRepository.charactersData[char2.character.url]
+        Truth.assertThat(result).isNotNull()
     }
 
     @Test
