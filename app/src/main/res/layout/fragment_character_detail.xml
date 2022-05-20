@@ -54,6 +54,7 @@
                         android:fontFamily="@font/grape_nuts_regular"
                         tools:text="LS" />
                     <TextView
+                        android:id="@+id/tv_character_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@{character.name}"

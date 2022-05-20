@@ -36,6 +36,15 @@ android {
     buildFeatures {
         dataBinding true
     }
+    sourceSets {
+        String sharedTestDir = 'src/sharedTest/java'
+        test {
+            java.srcDir sharedTestDir
+        }
+        androidTest {
+            java.srcDir sharedTestDir
+        }
+    }
 }
 
 dependencies {
@@ -65,6 +74,9 @@ dependencies {
     testImplementation TestDependencies.coroutinesTest
     testImplementation TestDependencies.archCoreTesting
 
+    androidTestImplementation TestDependencies.junit4
+    androidTestImplementation TestDependencies.coroutinesTest
     androidTestImplementation AndroidTestDependencies.testExtJunit
     androidTestImplementation AndroidTestDependencies.espresso
+    debugImplementation AndroidTestDependencies.fragmentTesting
 }

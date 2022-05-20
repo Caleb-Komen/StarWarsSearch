@@ -1,7 +1,6 @@
 package com.arch.starwarssearch.di
 
 import android.content.Context
-import androidx.room.Room
 import com.arch.starwarssearch.local.StarWarsDatabase
 import com.arch.starwarssearch.local.dao.CharacterDao
 import dagger.Module
@@ -19,11 +18,7 @@ object DatabaseModule {
     fun provideStarWarsDatabase(
         @ApplicationContext context: Context
     ): StarWarsDatabase{
-        return Room.databaseBuilder(
-            context,
-            StarWarsDatabase::class.java,
-            "starwars_db"
-        ).build()
+        return StarWarsDatabase.getInstance(context)
     }
 
     @Singleton
