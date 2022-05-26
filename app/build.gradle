@@ -45,6 +45,10 @@ android {
             java.srcDir sharedTestDir
         }
     }
+    testOptions.unitTests {
+        includeAndroidResources = true
+        returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -77,6 +81,7 @@ dependencies {
     androidTestImplementation TestDependencies.junit4
     androidTestImplementation TestDependencies.coroutinesTest
     androidTestImplementation AndroidTestDependencies.testExtJunit
-    androidTestImplementation AndroidTestDependencies.espresso
+    androidTestImplementation AndroidTestDependencies.espressoCore
+    androidTestImplementation AndroidTestDependencies.espressoContrib
     debugImplementation AndroidTestDependencies.fragmentTesting
 }

@@ -1,7 +1,8 @@
-package com.arch.starwarssearch
+package com.arch.starwarssearch.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.arch.starwarssearch.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StarWarsSearch">
         <activity
-            android:name=".StarWarsActivity"
+            android:name=".ui.StarWarsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

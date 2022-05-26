@@ -29,4 +29,6 @@
     <string name="delete_confirmation_message">Operation cannot be undone. Continue?</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="characters_from_network">Characters from network</string>
+    <string name="characters_from_local_db">Characters from local database</string>
 </resources>

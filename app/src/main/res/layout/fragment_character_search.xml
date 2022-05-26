@@ -55,6 +55,7 @@
                 android:id="@+id/rv_characters"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/characters_from_network"
                 app:items="@{characters}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/list_item_character" />
