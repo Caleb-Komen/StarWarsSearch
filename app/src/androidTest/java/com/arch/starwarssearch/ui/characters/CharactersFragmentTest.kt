@@ -9,7 +9,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.arch.starwarssearch.DataFactory
 import com.arch.starwarssearch.R
-import com.arch.starwarssearch.launchFragmentInHiltContainer
+import com.arch.starwarssearch.util.launchFragmentInHiltContainer
 import com.arch.starwarssearch.local.StarWarsDatabase
 import com.arch.starwarssearch.local.dao.CharacterDao
 import com.arch.starwarssearch.local.mapper.toEntity

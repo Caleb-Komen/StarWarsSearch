@@ -6,6 +6,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.arch.starwarssearch.*
 import com.arch.starwarssearch.mapper.toPresentation
+import com.arch.starwarssearch.util.launchFragmentInHiltContainer
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Test
 import org.junit.runner.RunWith

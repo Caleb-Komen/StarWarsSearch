@@ -4,10 +4,7 @@ import androidx.lifecycle.*
 import com.arch.starwarssearch.mapper.toPresentation
 import com.arch.starwarssearch.model.CharacterPresentation
 import com.arch.starwarssearch.usecases.SearchCharacterUseCase
-import com.arch.starwarssearch.util.AbsentLiveData
-import com.arch.starwarssearch.util.NO_INTERNET
-import com.arch.starwarssearch.util.Result
-import com.arch.starwarssearch.util.UNKNOWN_ERROR
+import com.arch.starwarssearch.util.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Job
@@ -39,21 +36,23 @@ class CharacterSearchViewModel @Inject constructor(
         _characterName.value = name
     }
     private fun searchCharacter(characterName: String): LiveData<Result<List<CharacterPresentation>>>{
-        val result = MutableLiveData<Result<List<CharacterPresentation>>>()
-        val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-            when (throwable){
-                is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
-                else -> result.value = Result.Error(UNKNOWN_ERROR)
+        wrapEspressoIdlingResource {
+            val result = MutableLiveData<Result<List<CharacterPresentation>>>()
+            val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
+                when (throwable) {
+                    is UnknownHostException -> result.value = Result.Error(NO_INTERNET)
+                    else -> result.value = Result.Error(UNKNOWN_ERROR)
+                }
             }
-        }
-        job?.cancel()
-        result.value = Result.Loading
-        job = viewModelScope.launch(coroutineExceptionHandler) {
-            searchCharacterUseCase(characterName).collect { results ->
-                val characters = results.map { it.toPresentation() }
-                result.value = Result.Success(characters)
+            job?.cancel()
+            result.value = Result.Loading
+            job = viewModelScope.launch(coroutineExceptionHandler) {
+                searchCharacterUseCase(characterName).collect { results ->
+                    val characters = results.map { it.toPresentation() }
+                    result.value = Result.Success(characters)
+                }
             }
+            return result
         }
-        return result
     }
 }

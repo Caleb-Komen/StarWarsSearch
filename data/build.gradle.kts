@@ -43,7 +43,6 @@ dependencies {
     implementation(Dependencies.roomRuntime)
     kapt(Dependencies.roomCompiler)
     implementation(Dependencies.roomKtx)
-    implementation(Dependencies.espressoIdlingResource)
 
     testImplementation(TestDependencies.junit4)
     testImplementation(TestDependencies.mockWebServer)
