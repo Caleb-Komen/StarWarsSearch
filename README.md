@@ -31,6 +31,7 @@ The domain module defines the models core to the app, interactors(usecases) and 
 - [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) - for dependency injection.
 - [Truth](https://github.com/google/truth) - assertion library that makes test assertions and failure messages more readable.
 - [MockWebServer](https://github.com/square/okhttp/tree/master/mockwebserver) - web server fot testing HTTP clients. Makes it easy to test that your app does the right thing when it makes HTTP and HTTPS calls.
+- [Espresso](https://developer.android.com/training/testing/espresso) - for UI tests.
 
 <img src="art/Screenshot_1.png" width=300> <img src="art/Screenshot_2.png" width=300> <img src="art/Screenshot_3.png" width=300> <img src="art/Screenshot_4.png" width=300>
 <img src="art/Screenshot_5.png" width=300>
